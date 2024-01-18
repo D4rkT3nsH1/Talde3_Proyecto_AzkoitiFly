@@ -22,7 +22,7 @@
 ### Pasos para pedir un préstamo como cliente:
 
 1. Ingresa al sistema con tu cuenta.
-    1.1 Si no tienes cuenta, registrate.
+    - Si no tienes cuenta, regístrate.
 2. Selecciona la opción de préstamos.
 3. Completa las variables requeridas asociadas a tu préstamo.
-4. Por último haz click en el botón de *"Pedir Préstamo"*.
+4. Por último, haz clic en el botón de *"Pedir Préstamo"*.
