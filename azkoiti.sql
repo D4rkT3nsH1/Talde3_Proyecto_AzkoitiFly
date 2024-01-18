@@ -5,15 +5,15 @@ CREATE DATABASE IF NOT EXISTS azkoiti;
 USE azkoiti;
 
 -- Creación de la tabla Usuario
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
     id INT PRIMARY KEY,
-    tipo VARCHAR(255),
+    is_admin BIT DEFAULT 0,
     nombre VARCHAR(255),
     apellido VARCHAR(255)
 );
 
 -- Creación de la tabla Préstamo
-CREATE TABLE Prestamo (
+CREATE TABLE prestamo (
     id INT PRIMARY KEY,
     id_usuario INT,
     cantidad INT,
