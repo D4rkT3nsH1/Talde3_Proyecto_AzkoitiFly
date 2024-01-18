@@ -16,7 +16,7 @@ CREATE TABLE usuario (
 CREATE TABLE prestamo (
     id INT PRIMARY KEY,
     id_usuario INT,
-    cantidad INT,
+    cantidad FLOAT,
     fh_inicio DATETIME,
     fh_final DATETIME,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
