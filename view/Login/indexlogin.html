@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZKOITI: Inicio Sesión</title>
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+
+<body>
+
+    <a href="index.html">
+        <div id="logo">
+            <h3>AZKOITI</h3>
+            <img src="../img/azkoiti.png" alt="logo">
+        </div>
+    </a>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form onsubmit="return false;">
+                <h1>Crear Cuenta</h1>
+                <input type="text" placeholder="Nombre" id="name_Reg" />
+                <input type="email" placeholder="Email" id="gmail_Reg" />
+                <input type="password" placeholder="Contraseña" id="pass_Reg" />
+                <button onclick="Registro()" id="regBtn">Registrarse</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form onsubmit="return false;">
+                <h1>Iniciar Sesión</h1>
+                <input type="email" placeholder="Email" id="gmail_Inicio" />
+                <input type="password" placeholder="Contraseña" id="pass_Inicio" />
+                <a id="modalActivar">¿Olvidaste la contraseña?</a>
+                <button onclick="InicioSesion()" id="iniBtn">Iniciar sesión</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Bienvenido!</h1>
+                    <p>Haz click en el botón de abajo e inicia sesión con tus datos</p>
+                    <button class="ghost" id="signIn">Iniciar Sesión</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hola, Buenas!</h1>
+                    <p>Haz click en el botón de abajo, registrate y empieza a mirar nuestros productos</p>
+                    <button class="ghost" id="signUp">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-form">
+                <h2>Recuperar Contraseña</h2>
+                <h5>Coloque el correo electrónico</h5>
+                <input type="email" placeholder="Email" id="gmail_Rec_Pass" />
+                <h5>Coloque la contraseña nueva</h5>
+                <input type="password" placeholder="Contraseña" id="pass_Rec_Pass" />
+                <button class="actContra" id="signUp" onclick="PassChange()">Actualizar contraseña</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="../js/login.js"></script>
+
+</body>
+
+</html>
