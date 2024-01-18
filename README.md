@@ -9,10 +9,10 @@
     - Inicio de sesión para **clientes** y **administradores** en la página.
 
 2. **Sistema de Cálculo de Préstamos para Administradores:**
-    - Autocompletado de tabla al ingresar las variables indicadas.
-    - Libertad de selección del sistema de préstamos.
+    - **Autocompletado** de tabla al ingresar las variables indicadas.
+    - **Libertad de selección** del sistema de préstamos.
 
-### Pasos para el Autocompletado de la Tabla:
+### Pasos para el autocompletado de la tabla:
 
 ```markdown
 1. Ingresa al sistema como administrador.
@@ -20,8 +20,11 @@
 3. Completa las variables requeridas, como monto, tasa de interés, plazo, etc.
 4. La tabla se autocompletará con los resultados del cálculo.
 
+### Pasos para pedir un préstamo como cliente:
 
-1. Accede a la sección de configuración de préstamos.
-2. Elige entre los diferentes sistemas de préstamos disponibles.
-3. Guarda la configuración seleccionada.
-4. Ahora, al realizar un cálculo, se aplicará el sistema de préstamo elegido.
+```markdown
+1. Ingresa al sistema con tu cuenta.
+    1.1 Si no tienes cuenta, registrate.
+2. Selecciona la opción de préstamos.
+3. Completa las variables requeridas asociadas a tu préstamo.
+4. Por último haz click en el botón de *"Pedir Préstamo"*.
