@@ -14,7 +14,6 @@
 
 ### Pasos para el autocompletado de la tabla:
 
-```markdown
 1. Ingresa al sistema como administrador.
 2. Selecciona la opción de cálculo de préstamos.
 3. Completa las variables requeridas, como monto, tasa de interés, plazo, etc.
@@ -22,7 +21,6 @@
 
 ### Pasos para pedir un préstamo como cliente:
 
-```markdown
 1. Ingresa al sistema con tu cuenta.
     1.1 Si no tienes cuenta, registrate.
 2. Selecciona la opción de préstamos.
