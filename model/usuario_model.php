@@ -42,7 +42,7 @@ class usuario_model
             return false;
         }
     }
-    
+
     public function CheckUserLogin($correo, $pass)
     {
         $this->OpenConnect();
