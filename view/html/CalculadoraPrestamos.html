@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZKOITI - Calculadora Prestamos</title>
+  <link rel="stylesheet" href="../css/calculadora.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+    </nav>
+  </header>
+  <div class="tabs-container">
+    <div class="tab-buttons">
+      <button class="tab-button" onclick="calculoSistemas('simple')">Simple</button>
+      <button class="tab-button" onclick="calculoSistemas('americano')">Americano</button>
+      <button class="tab-button" onclick="calculoSistemas('lineal')">Lineal</button>
+      <button class="tab-button" onclick="calculoSistemas('frances')">Frances</button>
+      <button class="tab-button" onclick="calculoSistemas('cCompleta')">Carencia Completa</button>
+      <button class="tab-button" onclick="calculoSistemas('cParcial')">Carencia Parcial</button>
+    </div>
+
+    <div id="tab1" class="tab-content">
+    </div>
+
+    <div id="tablaPrestamo">
+
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="../js/calculadora.js"></script>
+</body>
+
+</html>
