@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #560070;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#hero {
+    background-color: #66b3ff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#hero h2 {
+    color: #560070;
+}
+
+#hero p {
+    line-height: 1.6;
+    color: #333;
+}
+
+button {
+    background-color: #560070;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #00264d;
+}
+
+.features, .loan-types, .contact {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.features h2, .loan-types h2, .contact h2 {
+    color: #560070;
+}
+
+.features ul, .loan-types ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features li, .loan-types li {
+    margin-bottom: 10px;
+}
+
+.contact p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.contact button {
+    background-color: #ec9f9f;
+}
+
+.contact button:hover {
+    background-color: #d98b8b;
+}

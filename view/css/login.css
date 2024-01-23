@@ -6,14 +6,13 @@
     font-family: 'calibri';
 }
 
-html,
-body {
-    height: 100%;
-    background-image: url("fondo_login.jpg");
+input::placeholder{
+    color:rgb(80, 76, 76);
 }
 
 #logo {
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 5%, rgb(194, 74, 172) 100%);
+    background: linear-gradient(70deg, rgb(21, 26, 48) 5%, rgb(237, 130, 217) 100%);
+    text-align: center;
     align-items: center;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -21,7 +20,21 @@ body {
     color: white;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
+        
+  
+        
 }
+
+#logo1{
+    width: 35%; 
+    text-align: center;
+    display: 'flex'
+}
+
+#gmail_Inicio, #pass_Inicio{
+    background-color: lightgrey;
+}
+
 
 body {
     background-color: rgb(24, 26, 27);
@@ -29,7 +42,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: -20px 0 50px;
+    
 }
 
 h1 {
@@ -46,7 +59,6 @@ p {
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;
-    margin: 20px 0 30px;
 }
 
 span {
@@ -57,7 +69,7 @@ a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
-    margin: 15px 0;
+    
 }
 
 button {
@@ -71,12 +83,13 @@ button {
     transition: transform 80ms ease-in;
 }
 
-#regBtn {
-    background-color: #020024;
-}
+
 
 #iniBtn {
-    background-color: #a13588;
+    background-color: #680952;
+    color: white;
+    border: 3px solid black;
+    font-family: "Arial";
 }
 
 button:focus {
@@ -86,6 +99,8 @@ button:focus {
 button.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
+    border: 3px solid white;
+    font-family: "Arial";
 }
 
 form {
@@ -110,7 +125,8 @@ input {
 
 .container {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: 5px solid black;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
@@ -118,6 +134,7 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    box-shadow: 0 0 10px  rgb(194, 74, 172);
 }
 
 .form-container {
@@ -136,6 +153,7 @@ input {
 .container.right-panel-active .sign-in-container {
     transform: translateX(100%);
 }
+
 
 .sign-up-container {
     left: 0;
@@ -286,3 +304,14 @@ input {
 #modalActivar {
     cursor: pointer;
 }
+
+html,
+body {
+    height: 100%;
+    background-image: url("../../view/img/fondo_loginn.jpg");
+    background-size: cover;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+

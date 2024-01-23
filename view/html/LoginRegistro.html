@@ -14,39 +14,41 @@
 
     <a href="index.html">
         <div id="logo">
-            <h1><em><b>AZKOITI</b></em></h1>
-            <img src="../img/icons/azkoiti_sin_fondo.png" alt="logo">
+            <img id="logo1" src="../img/icons/azkoiti_texto_sin_fondo_white.png" alt="logo">
         </div>
     </a>
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form onsubmit="return false;">
-                <h1>Crear Cuenta</h1>
+                <h1><em>Crear Cuenta</em></h1>
                 <input type="text" placeholder="Nombre" id="name_Reg" />
                 <input type="email" placeholder="Email" id="gmail_Reg" />
                 <input type="password" placeholder="Contraseña" id="pass_Reg" />
-                <button onclick="Registro()" id="regBtn">Registrarse</button>
+                <button onclick="Registro()" id="iniBtn">Registrarse</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form onsubmit="return false;">
-                <h1>Iniciar Sesión</h1>
+                <h1><em>Iniciar Sesión</em></h1>
                 <input type="email" placeholder="Email" id="gmail_Inicio" />
-                <input type="password" placeholder="Contraseña" id="pass_Inicio" />
+                <input type="password" placeholder="Contraseña" id="pass_Inicio"/>
                 <a id="modalActivar">¿Olvidaste la contraseña?</a>
+                <br>
                 <button onclick="InicioSesion()" id="iniBtn">Iniciar sesión</button>
             </form>
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Bienvenido!</h1>
-                    <p>Haz click en el botón de abajo e inicia sesión con tus datos</p>
+                    <h1>¡Bienvenido!</h1>
+                    <br>
+                    <b>Haz click en el botón de abajo e inicia sesión con tus datos</b>
+                    <br>
                     <button class="ghost" id="signIn">Iniciar Sesión</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hola, Buenas!</h1>
+                    <h1>¡Hola, Buenas!</h1>
                     <p>Haz click en el botón de abajo, registrate y empieza a mirar nuestros productos</p>
                     <button class="ghost" id="signUp">Registrarse</button>
                 </div>
