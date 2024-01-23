@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Color de fondo pastel */
+}
+
+header {
+    background-color: #5c9ead; /* Azul pastel */
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+section {
+    padding: 2em;
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+    margin-bottom: 20px; /* Espacio entre secciones */
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+    color: #555;
+}
+
+button {
+    background-color: #8ab58a; /* Verde pastel */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #71a871; /* Verde pastel más oscuro al pasar el mouse */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+/* Estilos adicionales para los enlaces y la sección de contacto */
+a {
+    color: #5c9ead; /* Azul pastel para enlaces */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para la sección de contacto */
+button {
+    background-color: #ec9f9f; /* Rosa pastel para el botón de contacto */
+}
+
+button:hover {
+    background-color: #d98b8b; /* Rosa pastel más oscuro al pasar el mouse */
+}
