@@ -12,8 +12,7 @@ body {
 }
 
 #logo {
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 5%, rgba(51, 117, 62, 1) 100%);
-    display: inline-flex;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 5%, rgb(194, 74, 172) 100%);
     align-items: center;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -21,12 +20,6 @@ body {
     color: white;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-#logo img {
-    height: 50px;
-    width: 50px;
-    margin-left: 20px;
 }
 
 body {
@@ -82,7 +75,7 @@ button {
 }
 
 #iniBtn {
-    background-color: #33753e;
+    background-color: #a13588;
 }
 
 button:focus {
@@ -189,7 +182,7 @@ input {
 
 .overlay {
     background: #FF416C;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 25%, rgba(51, 117, 62, 1) 100%);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 25%, rgb(194, 74, 172) 100%);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
