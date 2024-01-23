@@ -2,35 +2,38 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9; /* Color de fondo pastel */
+    background-color: #f9f9f9;
 }
 
 header {
-    background-color: #5c9ead; /* Azul pastel */
+    background-color: #560070;
     color: #fff;
     text-align: center;
     padding: 1em 0;
 }
 
-section {
-    padding: 2em;
-    background-color: #fff; /* Fondo blanco */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sutil sombra */
-    margin-bottom: 20px; /* Espacio entre secciones */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-h2 {
+#hero {
+    background-color: #66b3ff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#hero h2 {
+    color: #560070;
+}
+
+#hero p {
+    line-height: 1.6;
     color: #333;
 }
 
-p {
-    line-height: 1.6;
-    color: #555;
-}
-
 button {
-    background-color: #8ab58a; /* Verde pastel */
+    background-color: #560070;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -40,33 +43,38 @@ button {
 }
 
 button:hover {
-    background-color: #71a871; /* Verde pastel más oscuro al pasar el mouse */
+    background-color: #00264d;
 }
 
-ul {
+.features, .loan-types, .contact {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.features h2, .loan-types h2, .contact h2 {
+    color: #560070;
+}
+
+.features ul, .loan-types ul {
     list-style-type: none;
     padding: 0;
 }
 
-ul li {
-    margin-bottom: 5px;
+.features li, .loan-types li {
+    margin-bottom: 10px;
 }
 
-/* Estilos adicionales para los enlaces y la sección de contacto */
-a {
-    color: #5c9ead; /* Azul pastel para enlaces */
-    text-decoration: none;
+.contact p {
+    line-height: 1.6;
+    color: #555;
 }
 
-a:hover {
-    text-decoration: underline;
+.contact button {
+    background-color: #ec9f9f;
 }
 
-/* Estilo para la sección de contacto */
-button {
-    background-color: #ec9f9f; /* Rosa pastel para el botón de contacto */
-}
-
-button:hover {
-    background-color: #d98b8b; /* Rosa pastel más oscuro al pasar el mouse */
+.contact button:hover {
+    background-color: #d98b8b;
 }
