@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AZKOITI - Calculadora Prestamos</title>
   <link rel="stylesheet" href="../css/calculadora.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 
 <body>
@@ -15,16 +16,29 @@
   </header>
   <div class="tabs-container">
     <div class="tab-buttons">
-      <button class="tab-button" onclick="calculoSistemas('simple')">Simple</button>
-      <button class="tab-button" onclick="calculoSistemas('americano')">Americano</button>
-      <button class="tab-button" onclick="calculoSistemas('lineal')">Lineal</button>
-      <button class="tab-button" onclick="calculoSistemas('frances')">Frances</button>
-      <button class="tab-button" onclick="calculoSistemas('cCompleta')">Carencia Completa</button>
-      <button class="tab-button" onclick="calculoSistemas('cParcial')">Carencia Parcial</button>
+      <button class="tab-button" onclick="eleccionSistema('simple', this)">Simple</button>
+      <button class="tab-button" onclick="eleccionSistema('americano', this)">Americano</button>
+      <button class="tab-button" onclick="eleccionSistema('lineal', this)">Lineal</button>
+      <button class="tab-button" onclick="eleccionSistema('frances', this)">Frances</button>
+      <button class="tab-button" onclick="eleccionSistema('cCompleta', this)">Carencia Completa</button>
+      <button class="tab-button" onclick="eleccionSistema('cParcial', this)">Carencia Parcial</button>
     </div>
 
-    <div id="tab1" class="tab-content">
+    <div id="formulario">
+      <form id="prestamoForm">
+        <label for="monto">Monto del préstamo:</label>
+        <input type="number" id="monto" step="500" required>
+
+        <label for="plazo">Plazo (años):</label>
+        <input type="number" id="plazo" required>
+
+        <label for="interes">Tasa de interés (%):</label>
+        <input type="number" id="interes" required>
+
+        <button type="button" onclick="calcularPrestamo()">Calcular</button>
+      </form>
     </div>
+
 
     <div id="tablaPrestamo">
 

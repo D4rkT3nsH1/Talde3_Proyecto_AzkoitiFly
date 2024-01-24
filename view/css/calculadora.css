@@ -27,16 +27,15 @@ body {
     font-size: 16px;
 }
 
-.tab-content {
-    display: none;
-    padding: 20px;
-    border-top: 1px solid #ccc;
-}
-
 .tab-content.active {
     display: block;
 }
 
-.tab-button .active {
-    background-color: #ccc;
+.active {
+    background-color: #bcbcbc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
