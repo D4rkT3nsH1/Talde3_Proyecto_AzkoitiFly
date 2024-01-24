@@ -5,11 +5,9 @@ body {
     background-color: #f9f9f9;
 }
 
+/* cabecero y barra de navegacion */
 header {
-    background-color: #560070;
     color: #fff;
-    text-align: center;
-    padding: 1em 0;
 }
 
 .container {
