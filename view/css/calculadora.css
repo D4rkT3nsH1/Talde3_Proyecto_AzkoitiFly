@@ -4,6 +4,14 @@ body {
     padding: 0;
 }
 
+#formulario {}
+
+#prestamoForm {}
+
+#periodo {
+    display: none;
+}
+
 .tabs-container {
     width: 100%;
     max-width: 800px;
@@ -12,6 +20,7 @@ body {
 }
 
 .tab-buttons {
+    border-radius: 5px 5px 0 0;
     display: flex;
     background-color: #f1f1f1;
 }
@@ -21,9 +30,7 @@ body {
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    border: none;
     outline: none;
-    background-color: inherit;
     font-size: 16px;
 }
 
@@ -35,7 +42,35 @@ body {
     background-color: #bcbcbc;
 }
 
+#tablaPrestamo {
+    padding: 10px 20px 10px 20px;
+}
+
 table {
-    width: 100%;
     border-collapse: collapse;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #efefef;
+}
+
+tr:nth-child(even) {
+    background-color: #e3e3e3;
 }
