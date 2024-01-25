@@ -13,8 +13,10 @@ function eleccionSistema(sistema, button) {
 
     if (sistemaSeleccionado == "cCompleta" || sistemaSeleccionado == "cParcial") {
         $(".periodo").show();
+        $("#periodosCarencia").attr("required", true);
     } else {
         $(".periodo").hide();
+        $("#periodosCarencia").removeAttr("required");
     }
 
     button.classList.add("active");
@@ -54,10 +56,17 @@ function calcularPrestamo() {
     const interes = parseFloat(document.getElementById("interes").value);
     const periodosCarencia = parseInt(document.getElementById("periodosCarencia").value);
 
-    // Validar que los valores sean números y estén en el rango adecuado
-    if (isNaN(monto) || isNaN(plazo) || isNaN(interes) || isNaN(periodosCarencia) || monto <= 0 || plazo < 0 || interes <= 0 || periodosCarencia < 0) {
-        toastr.error("Por favor, ingresa valores válidos.");
-        return;
+    // Validar que los valores sean números y estén en el rango adecuado, diferenciando si es un préstamo con carencia o no
+    if (sistemaSeleccionado == "cCompleta" || sistemaSeleccionado == "cParcial") {
+        if (isNaN(monto) || isNaN(plazo) || isNaN(interes) || isNaN(periodosCarencia) || monto <= 0 || plazo < 0 || interes <= 0 || periodosCarencia < 0) {
+            toastr.error("Por favor, ingresa valores válidos.");
+            return;
+        }
+    } else {
+        if (isNaN(monto) || isNaN(plazo) || isNaN(interes) || monto <= 0 || plazo < 0 || interes <= 0) {
+            toastr.error("Por favor, ingresa valores válidos.");
+            return;
+        }
     }
 
     // Calcular las cuotas según el sistema de préstamo seleccionado
