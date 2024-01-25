@@ -292,14 +292,21 @@ function calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia
     let saldoPendiente = monto;
 
     let amortizacion = [];
-
-    for (let año = 0; año <= periodosCarencia; año++) {
+    amortizacion.push({
+        Aldiak: 0,
+        a: ' - ',
+        I: ' - ',
+        A: ' - ',
+        M: ' - ',
+        C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+    });
+    for (let año = 1; año <= periodosCarencia; año++) {
         const cuotaAnual = saldoPendiente * (1 + tasaInteres) ** periodosCarencia;
 
         amortizacion.push({
             Aldiak: año,
-            a: ' - ',
-            I: ' - ',
+            a: (saldoPendiente * tasaInteres).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            I: (saldoPendiente * tasaInteres).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
             A: ' - ',
             M: ' - ',
             C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
@@ -315,10 +322,10 @@ function calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia
         //=B2/((1-((1+B4)^-B3))/B4)
         let cuotaAnual = monto / (((1 - ((1 + tasaInteres) ** -plazo)) / tasaInteres));
         C = monto;
-        I = C * tasaInteres;
+        I = saldoPendiente * tasaInteres;
         A = cuotaAnual - I;
         a = I + A;
-        M = A + a;
+        M = M + A;
         saldoPendiente -= A;
         amortizacion.push({
             Aldiak: año,
@@ -329,7 +336,6 @@ function calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia
             C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
         });
 
-        saldoPendiente += cuotaAnual;
     }
     
 
