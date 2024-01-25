@@ -12,9 +12,9 @@ function eleccionSistema(sistema, button) {
     console.log(sistemaSeleccionado);
 
     if (sistemaSeleccionado == "cCompleta" || sistemaSeleccionado == "cParcial") {
-        $("#periodo").show();
+        $(".periodo").show();
     } else {
-        $("#periodo").hide();
+        $(".periodo").hide();
     }
 
     button.classList.add("active");
@@ -255,9 +255,10 @@ function calcularPrestamoCarenciaCompleta(monto, plazo, interes, periodosCarenci
             C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
         });
     }
+
     let M = 0;
     for (let año = periodosCarencia + 1; año <= plazo + periodosCarencia; año++) {
-        let cuotaAnual = monto / (((1 - ((1 + tasaInteres) ** -plazo)) / tasaInteres) * (1 + tasaInteres) ** -2);
+        let cuotaAnual = monto / (((1 - ((1 + tasaInteres) ** -plazo)) / tasaInteres) * (1 + tasaInteres) ** -periodosCarencia);
         let I = saldoPendiente * tasaInteres;
         let A = cuotaAnual - I;
         M = M + A;
