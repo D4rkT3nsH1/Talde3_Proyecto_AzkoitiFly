@@ -238,7 +238,6 @@ function calcularPrestamoFrances(monto, plazo, interes) {
 
 // FUNCIONA
 function calcularPrestamoCarenciaCompleta(monto, plazo, interes, periodosCarencia) {
-    debugger;
     const tasaInteres = interes / 100;
     let saldoPendiente = monto;
 
