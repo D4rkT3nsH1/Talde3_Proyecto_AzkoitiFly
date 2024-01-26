@@ -56,6 +56,7 @@ class usuario_model
             $row = $result->fetch_assoc(); // Obtener la fila de la consulta
 
             $datosUser["idUsuario"] = $row['idUsuario'];
+            $datosUser["is_admin"] = $row['is_admin'];
             $datosUser["correoUsuario"] = $row['correoUsuario'];
             $datosUser["nameUsuario"] = $row['nameUsuario'];
 

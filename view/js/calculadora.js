@@ -11,10 +11,18 @@ function eleccionSistema(sistema, button) {
     sistemaSeleccionado = sistema;
     console.log(sistemaSeleccionado);
 
+    if (sistemaSeleccionado == "cCompleta" || sistemaSeleccionado == "cParcial") {
+        $(".periodo").show();
+        $("#periodosCarencia").attr("required", true);
+    } else {
+        $(".periodo").hide();
+        $("#periodosCarencia").removeAttr("required");
+    }
+
     button.classList.add("active");
 }
 
-function mostrarTablaResultado(sistema, amortizacion) {
+function mostrarTablaResultado(amortizacion) {
     const tablaPrestamo = document.getElementById("tablaPrestamo");
 
     // Crear la tabla y sus celdas
@@ -46,24 +54,31 @@ function calcularPrestamo() {
     const monto = parseFloat(document.getElementById("monto").value);
     const plazo = parseInt(document.getElementById("plazo").value);
     const interes = parseFloat(document.getElementById("interes").value);
+    const periodosCarencia = parseInt(document.getElementById("periodosCarencia").value);
 
-    // Validar que los valores sean números y estén en el rango adecuado
-    if (isNaN(monto) || isNaN(plazo) || isNaN(interes) || monto <= 0 || plazo <= 0 || interes <= 0) {
-        toastr.error("Por favor, ingresa valores válidos.");
-        return;
+    // Validar que los valores sean números y estén en el rango adecuado, diferenciando si es un préstamo con carencia o no
+    if (sistemaSeleccionado == "cCompleta" || sistemaSeleccionado == "cParcial") {
+        if (isNaN(monto) || isNaN(plazo) || isNaN(interes) || isNaN(periodosCarencia) || monto <= 0 || plazo < 0 || interes <= 0 || periodosCarencia < 0) {
+            toastr.error("Por favor, ingresa valores válidos.");
+            return;
+        }
+    } else {
+        if (isNaN(monto) || isNaN(plazo) || isNaN(interes) || monto <= 0 || plazo < 0 || interes <= 0) {
+            toastr.error("Por favor, ingresa valores válidos.");
+            return;
+        }
     }
 
     // Calcular las cuotas según el sistema de préstamo seleccionado
-    const amortizacion = calcularAmortizacion(sistemaSeleccionado, monto, plazo, interes);
+    const amortizacion = calcularAmortizacion(sistemaSeleccionado, monto, plazo, interes, periodosCarencia);
 
     // Mostrar el resultado en la tabla
-    mostrarTablaResultado(sistemaSeleccionado, amortizacion);
+    mostrarTablaResultado(amortizacion);
 }
 
 // FUNCIONA
 function calcularPrestamoSimple(monto, plazo, interes) {
     const tasaInteres = interes / 100;
-    const cuota = monto / plazo;
 
     let amortizacion = [];
 
@@ -74,7 +89,7 @@ function calcularPrestamoSimple(monto, plazo, interes) {
         I: ' - ',
         A: ' - ',
         M: ' - ',
-        C: monto.toFixed(2) + ' € ',
+        C: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
     });
 
     for (let año = 1; año <= plazo; año++) {
@@ -85,17 +100,17 @@ function calcularPrestamoSimple(monto, plazo, interes) {
                 I: ' - ',
                 A: ' - ',
                 M: ' - ',
-                C: monto.toFixed(2) + ' € ',
+                C: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
             });
         } else {
             const pagoAnual = monto * (1 + tasaInteres) ** año;
             const interesAño = pagoAnual - monto;
             amortizacion.push({
                 Aldiak: año,
-                a: pagoAnual.toFixed(2) + ' € ',
-                I: interesAño.toFixed(2) + ' € ',
-                A: monto.toFixed(2) + ' € ',
-                M: monto.toFixed(2) + ' € ',
+                a: pagoAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                I: interesAño.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                A: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                M: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
                 C: ' - ',
             });
         }
@@ -117,27 +132,27 @@ function calcularPrestamoAmericano(monto, plazo, interes) {
         I: ' - ',
         A: ' - ',
         M: ' - ',
-        C: monto.toFixed(2) + ' € ',
+        C: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
     });
 
     for (let año = 1; año <= plazo; año++) {
         if (año > 0 && año != plazo) {
             amortizacion.push({
                 Aldiak: año,
-                a: interesAño.toFixed(2) + ' € ',
-                I: interesAño.toFixed(2) + ' € ',
+                a: interesAño.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                I: interesAño.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
                 A: ' - ',
                 M: ' - ',
-                C: monto.toFixed(2) + ' € ',
+                C: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
             });
         } else {
             const pagoAnual = monto + interesAño;
             amortizacion.push({
                 Aldiak: año,
-                a: pagoAnual.toFixed(2) + ' € ',
-                I: interesAño.toFixed(2) + ' € ',
-                A: monto.toFixed(2) + ' € ',
-                M: monto.toFixed(2) + ' € ',
+                a: pagoAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                I: interesAño.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                A: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+                M: monto.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
                 C: ' - ',
             });
         }
@@ -160,7 +175,7 @@ function calcularPrestamoLineal(monto, plazo, interes) {
         I: ' - ',
         A: ' - ',
         M: ' - ',
-        C: saldoPendiente.toFixed(2) + ' € ',
+        C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
     });
 
     for (let año = 1; año <= plazo; año++) {
@@ -171,11 +186,11 @@ function calcularPrestamoLineal(monto, plazo, interes) {
 
         amortizacion.push({
             Aldiak: año,
-            a: pagoAnual.toFixed(2) + ' € ',
-            I: interesAño.toFixed(2) + ' € ',
-            A: cuota.toFixed(2) + ' € ',
-            M: PagosTotal.toFixed(2) + ' € ',
-            C: pagoRestante.toFixed(2) + ' € ',
+            a: pagoAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            I: interesAño.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            A: cuota.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            M: PagosTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            C: pagoRestante.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
         });
 
         saldoPendiente = pagoRestante;
@@ -184,6 +199,7 @@ function calcularPrestamoLineal(monto, plazo, interes) {
     return amortizacion;
 }
 
+// FUNCIONA
 function calcularPrestamoFrances(monto, plazo, interes) {
     const tasaInteres = interes / 100;
     const cuotaAnual = monto * tasaInteres / (1 - Math.pow(1 + tasaInteres, -plazo));
@@ -197,7 +213,7 @@ function calcularPrestamoFrances(monto, plazo, interes) {
         I: ' - ',
         A: ' - ',
         M: ' - ',
-        C: saldoPendiente.toFixed(2) + ' € ',
+        C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
     });
 
     for (let año = 1; año <= plazo; año++) {
@@ -207,11 +223,11 @@ function calcularPrestamoFrances(monto, plazo, interes) {
 
         amortizacion.push({
             Aldiak: año,
-            a: cuotaAnual.toFixed(2) + ' € ',
-            I: interesAnual.toFixed(2) + ' € ',
-            A: amortizacionAnual.toFixed(2) + ' € ',
-            M: (cuotaAnual * año).toFixed(2) + ' € ',
-            C: saldoRestante.toFixed(2) + ' € ',
+            a: cuotaAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            I: interesAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            A: amortizacionAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            M: (cuotaAnual * año).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            C: saldoRestante.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
         });
 
         saldoPendiente = saldoRestante;
@@ -220,8 +236,112 @@ function calcularPrestamoFrances(monto, plazo, interes) {
     return amortizacion;
 }
 
+// FUNCIONA
+function calcularPrestamoCarenciaCompleta(monto, plazo, interes, periodosCarencia) {
+    const tasaInteres = interes / 100;
+    let saldoPendiente = monto;
 
-function calcularAmortizacion(sistema, monto, plazo, interes) {
+    let amortizacion = [];
+
+    amortizacion.push({
+        Aldiak: 0,
+        a: ' - ',
+        I: ' - ',
+        A: ' - ',
+        M: ' - ',
+        C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+    });
+
+    for (let año = 1; año <= periodosCarencia; año++) {
+        saldoPendiente = monto * (1 + tasaInteres) ** año;
+        amortizacion.push({
+            Aldiak: año,
+            a: ' - ',
+            I: ' - ',
+            A: ' - ',
+            M: ' - ',
+            C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+        });
+    }
+
+    let M = 0;
+    for (let año = periodosCarencia + 1; año <= plazo + periodosCarencia; año++) {
+        let cuotaAnual = monto / (((1 - ((1 + tasaInteres) ** -plazo)) / tasaInteres) * (1 + tasaInteres) ** -periodosCarencia);
+        let I = saldoPendiente * tasaInteres;
+        let A = cuotaAnual - I;
+        M = M + A;
+        saldoPendiente -= A;
+        amortizacion.push({
+            Aldiak: año,
+            a: cuotaAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            I: I.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            A: A.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            M: M.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+        });
+
+    }
+
+    return amortizacion;
+}
+
+// 
+function calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia) {
+    const tasaInteres = interes / 100;
+    let saldoPendiente = monto;
+
+    let amortizacion = [];
+    amortizacion.push({
+        Aldiak: 0,
+        a: ' - ',
+        I: ' - ',
+        A: ' - ',
+        M: ' - ',
+        C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+    });
+    for (let año = 1; año <= periodosCarencia; año++) {
+        const cuotaAnual = saldoPendiente * (1 + tasaInteres) ** periodosCarencia;
+
+        amortizacion.push({
+            Aldiak: año,
+            a: (saldoPendiente * tasaInteres).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            I: (saldoPendiente * tasaInteres).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            A: ' - ',
+            M: ' - ',
+            C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+        });
+
+    }
+    let A = 0;
+    let a = 0;
+    let I = 0;
+    let C = 0;
+    let M = 0;
+    for (let año = periodosCarencia + 1; año <= plazo + periodosCarencia; año++) {
+        //=B2/((1-((1+B4)^-B3))/B4)
+        let cuotaAnual = monto / (((1 - ((1 + tasaInteres) ** -plazo)) / tasaInteres));
+        C = monto;
+        I = saldoPendiente * tasaInteres;
+        A = cuotaAnual - I;
+        a = I + A;
+        M = M + A;
+        saldoPendiente -= A;
+        amortizacion.push({
+            Aldiak: año,
+            a: cuotaAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            I: I.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            A: A.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            M: M.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+        });
+
+    }
+    
+
+    return amortizacion;
+}
+
+function calcularAmortizacion(sistema, monto, plazo, interes, periodosCarencia) {
     // Lógica de cálculo para cada sistema
     switch (sistema) {
         case 'simple':
@@ -233,9 +353,9 @@ function calcularAmortizacion(sistema, monto, plazo, interes) {
         case 'frances':
             return calcularPrestamoFrances(monto, plazo, interes);
         case 'cCompleta':
-            return calcularPrestamoCarenciaCompleta(monto, plazo, interes);
+            return calcularPrestamoCarenciaCompleta(monto, plazo, interes, periodosCarencia);
         case 'cParcial':
-            return calcularPrestamoCarenciaParcial(monto, plazo, interes);
+            return calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia);
         default:
             alert("Sistema no reconocido");
             return [];

@@ -26,7 +26,7 @@ try {
     
     // Retorna un mensaje JSON según el resultado
     if ($result) {
-        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "usuario" => $result["nameUsuario"], "correoUsuario" => $result["correoUsuario"]]);
+        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "usuario" => $result["nameUsuario"], "correoUsuario" => $result["correoUsuario"], "is_admin" => $result["is_admin"]]);
     } else {
         echo json_encode(["success" => false, "message" => "Correo o contraseña incorrectos"]);
     }

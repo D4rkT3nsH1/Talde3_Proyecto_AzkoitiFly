@@ -1,6 +1,7 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
+const finanzasbotonButton = document.getElementById('finanzasboton');
 
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
@@ -189,3 +190,35 @@ function PassChange() {
         }
     });
 }
+
+$(document).ready(function () {
+    // Agrega un evento click al botón
+    $("#finanzasboton").on("click", function () {
+        // Verifica la sesión antes de ejecutar la acción del botón
+        verificarSesion();
+    });
+
+    // Función para verificar la sesión mediante AJAX
+    function verificarSesion() {
+        $.ajax({
+            url: '../../controller/cVerificar.php',  // Cambia la URL a la ruta de tu servidor para verificar la sesión
+            type: 'GET',
+            success: function (respuesta) {
+                // Si la sesión está activa, permite el uso del botón
+                if (respuesta === 'esadmin') {
+                    // Muestra un toastr indicando que tiene permiso para entrar
+                    toastr.success('¡Permiso concedido! Puedes hacer finanzas.');
+                    // Agrega aquí la lógica para redirigir a la página de CalculadoraPrestamos.html
+                    window.location.href = 'CalculadoraPrestamos.html';
+                } else {
+                    // Si la sesión no está activa, muestra un toastr indicando que debe iniciar sesión
+                    toastr.warning('Debes iniciar sesión para acceder a esta funcionalidad.');
+                }
+            },
+            error: function () {
+                // Manejo de errores
+                alert("Error al verificar la sesión");
+            }
+        });
+    }
+});
