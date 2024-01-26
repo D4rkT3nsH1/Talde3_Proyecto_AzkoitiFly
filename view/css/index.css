@@ -10,6 +10,7 @@ header {
     color: #fff;
 }
 
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -31,7 +32,7 @@ header {
 }
 
 section {
-    padding: 30px;
+    padding: 50px;
 }
 
 button {
