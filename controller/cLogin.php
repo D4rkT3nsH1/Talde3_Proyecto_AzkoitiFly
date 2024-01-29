@@ -6,6 +6,7 @@ $User_Model = new usuario_model();
 // Inicializar la sesión
 session_start();
 
+
 try {
     // Recibe los datos JSON
     $data = json_decode(file_get_contents("php://input"), true);
@@ -20,6 +21,7 @@ try {
     if ($result) {
         // Metemos los datos en la sesión
         $_SESSION['correo'] = $correo;
+        $_SESSION['pass'] = $pass;
         $_SESSION['user'] = $result["nameUsuario"]; // usuario
         $_SESSION['userId'] = $result["idUsuario"]; // idUsuario
     }

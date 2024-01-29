@@ -25,7 +25,7 @@ class usuario_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuarios WHERE correoUsuario = '$correo'";
+        $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -47,7 +47,7 @@ class usuario_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuarios WHERE correoUsuario = '$correo' AND passUsuario = '$pass'";
+        $sql = "SELECT * FROM usuario WHERE correo = '$correo' AND contraseña = '$pass'";
         $result = $this->conn->query($sql);
 
         $datosUser = array();
@@ -66,6 +66,39 @@ class usuario_model
             return $datosUser;
         } else {
             return false;
+        }
+    }
+    public function RegisterUser($correo, $name, $pass)
+    {
+        $this->OpenConnect();
+
+        // Verificar si el correo ya existe
+        $existingUser = $this->UserByCorreo($correo);
+
+        if ($existingUser) {
+            return false; // El correo ya está registrado
+        }
+
+        // Insertar nuevo usuario
+        $sql = "INSERT INTO usuario (correo, nombre, contraseña) VALUES ('$correo', '$name', '$pass')";
+        $result = $this->conn->query($sql);
+
+        if ($result) {
+            $insertedId = $this->conn->insert_id;
+            $userData = array(
+                "idUsuario" => $insertedId,
+                "correoUsuario" => $correo,
+                "nameUsuario" => $name,
+                "is_admin" => 0 // Puedes ajustar este valor según tus necesidades
+            );
+
+            if ($this->conn !== null) {
+                $this->CloseConnect();
+            }
+
+            return $userData;
+        } else {
+            return false; // Error al registrar usuario
         }
     }
 }
