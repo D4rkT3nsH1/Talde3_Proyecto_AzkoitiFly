@@ -40,7 +40,6 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `is_admin`, `nombre`, `correo`, `contraseña`) VALUES
-(1, b'0', 'iker', 'iker@gmail.com', '1234Iker'),
 (2, b'0', 'juanjo', 'popo@gmail.com', '$2y$10$CWl7xpM/VhwqqaKhD02KiuitIYcxNmpm9b1yyp3oVXophsLfH1LlC');
 
 --
