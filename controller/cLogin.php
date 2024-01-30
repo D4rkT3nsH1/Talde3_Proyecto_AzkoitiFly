@@ -6,7 +6,6 @@ $User_Model = new usuario_model();
 // Inicializar la sesión
 session_start();
 
-
 try {
     // Recibe los datos JSON
     $data = json_decode(file_get_contents("php://input"), true);

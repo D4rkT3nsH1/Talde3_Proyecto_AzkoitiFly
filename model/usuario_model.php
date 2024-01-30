@@ -47,27 +47,29 @@ class usuario_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuario WHERE correo = '$correo' AND contraseña = '$pass'";
+        $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
         $result = $this->conn->query($sql);
 
-        $datosUser = array();
-
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc(); // Obtener la fila de la consulta
+            $row = $result->fetch_assoc();
 
-            $datosUser["idUsuario"] = $row['idUsuario'];
-            $datosUser["is_admin"] = $row['is_admin'];
-            $datosUser["correoUsuario"] = $row['correoUsuario'];
-            $datosUser["nameUsuario"] = $row['nameUsuario'];
+            // Verificar la contraseña usando password_verify()
+            if (password_verify($pass, $row['contraseña'])) {
+                $datosUser["idUsuario"] = $row['idUsuario'];
+                $datosUser["is_admin"] = $row['is_admin'];
+                $datosUser["correoUsuario"] = $row['correoUsuario'];
+                $datosUser["nameUsuario"] = $row['nameUsuario'];
 
-            if ($this->conn !== null) {
-                $this->CloseConnect();
+                if ($this->conn !== null) {
+                    $this->CloseConnect();
+                }
+                return $datosUser;
             }
-            return $datosUser;
-        } else {
-            return false;
         }
+        return false; // Correo o contraseña incorrectos
     }
+
+
     public function RegisterUser($correo, $name, $pass)
     {
         $this->OpenConnect();
@@ -79,8 +81,11 @@ class usuario_model
             return false; // El correo ya está registrado
         }
 
-        // Insertar nuevo usuario
-        $sql = "INSERT INTO usuario (correo, nombre, contraseña) VALUES ('$correo', '$name', '$pass')";
+        // Cifrar la contraseña
+        $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+
+        // Insertar nuevo usuario con la contraseña cifrada
+        $sql = "INSERT INTO usuario (correo, nombre, contraseña) VALUES ('$correo', '$name', '$hashedPass')";
         $result = $this->conn->query($sql);
 
         if ($result) {
