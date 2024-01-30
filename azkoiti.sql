@@ -9,7 +9,6 @@ CREATE TABLE usuario (
     id INT PRIMARY KEY,
     is_admin BIT DEFAULT 0,
     nombre VARCHAR(255),
-    apellido VARCHAR(255),
     correo VARCHAR(255),
     contraseña VARCHAR(255)
 );

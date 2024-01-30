@@ -25,7 +25,7 @@ class usuario_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuarios WHERE correoUsuario = '$correo'";
+        $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -47,25 +47,63 @@ class usuario_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuarios WHERE correoUsuario = '$correo' AND passUsuario = '$pass'";
+        $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
         $result = $this->conn->query($sql);
 
-        $datosUser = array();
-
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc(); // Obtener la fila de la consulta
+            $row = $result->fetch_assoc();
 
-            $datosUser["idUsuario"] = $row['idUsuario'];
-            $datosUser["is_admin"] = $row['is_admin'];
-            $datosUser["correoUsuario"] = $row['correoUsuario'];
-            $datosUser["nameUsuario"] = $row['nameUsuario'];
+            // Verificar la contraseña usando password_verify()
+            if (password_verify($pass, $row['contraseña'])) {
+                $datosUser["idUsuario"] = $row['idUsuario'];
+                $datosUser["is_admin"] = $row['is_admin'];
+                $datosUser["correoUsuario"] = $row['correoUsuario'];
+                $datosUser["nameUsuario"] = $row['nameUsuario'];
+
+                if ($this->conn !== null) {
+                    $this->CloseConnect();
+                }
+                return $datosUser;
+            }
+        }
+        return false; // Correo o contraseña incorrectos
+    }
+
+
+    public function RegisterUser($correo, $name, $pass)
+    {
+        $this->OpenConnect();
+
+        // Verificar si el correo ya existe
+        $existingUser = $this->UserByCorreo($correo);
+
+        if ($existingUser) {
+            return false; // El correo ya está registrado
+        }
+
+        // Cifrar la contraseña
+        $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+
+        // Insertar nuevo usuario con la contraseña cifrada
+        $sql = "INSERT INTO usuario (correo, nombre, contraseña) VALUES ('$correo', '$name', '$hashedPass')";
+        $result = $this->conn->query($sql);
+
+        if ($result) {
+            $insertedId = $this->conn->insert_id;
+            $userData = array(
+                "idUsuario" => $insertedId,
+                "correoUsuario" => $correo,
+                "nameUsuario" => $name,
+                "is_admin" => 0 // Puedes ajustar este valor según tus necesidades
+            );
 
             if ($this->conn !== null) {
                 $this->CloseConnect();
             }
-            return $datosUser;
+
+            return $userData;
         } else {
-            return false;
+            return false; // Error al registrar usuario
         }
     }
 }

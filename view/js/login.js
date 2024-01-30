@@ -170,11 +170,11 @@ function PassChange() {
                 response = JSON.parse(response);
                 if (response.success) {
                     // Si la operación fue exitosa, muestra un toast de éxito
-                    toastr.success(response.message);
-                    $("#myModal").fadeOut(550, function () {
+                        $("#myModal").fadeOut(550, function () {
                         // Limpia los campos después de ocultar el modal
                         $("#gmail_Rec_Pass").val("");
                         $("#pass_Rec_Pass").val("");
+                        toastr.success(response.message);
                     });
                 } else {
                     // Si la operación falló, muestra un toast de error
