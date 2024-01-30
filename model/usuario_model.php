@@ -55,10 +55,10 @@ class usuario_model
 
             // Verificar la contraseña usando password_verify()
             if (password_verify($pass, $row['contraseña'])) {
-                $datosUser["idUsuario"] = $row['idUsuario'];
+                $datosUser["id"] = $row['id'];
                 $datosUser["is_admin"] = $row['is_admin'];
-                $datosUser["correoUsuario"] = $row['correoUsuario'];
-                $datosUser["nameUsuario"] = $row['nameUsuario'];
+                $datosUser["correo"] = $row['correo'];
+                $datosUser["nombre"] = $row['nombre'];
 
                 if ($this->conn !== null) {
                     $this->CloseConnect();

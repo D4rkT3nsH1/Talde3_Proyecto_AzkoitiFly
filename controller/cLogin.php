@@ -19,15 +19,15 @@ try {
 
     if ($result) {
         // Metemos los datos en la sesión
-        $_SESSION['correo'] = $correo;
-        $_SESSION['pass'] = $pass;
-        $_SESSION['user'] = $result["nameUsuario"]; // usuario
-        $_SESSION['userId'] = $result["idUsuario"]; // idUsuario
+        $_SESSION['is_admin'] = $result["is_admin"];
+        $_SESSION['correo'] = $result["correo"];
+        $_SESSION['user'] = $result["nombre"]; // usuario
+        $_SESSION['userId'] = $result["id"]; // idUsuario
     }
-    
+
     // Retorna un mensaje JSON según el resultado
     if ($result) {
-        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "usuario" => $result["nameUsuario"], "correo" => $result["correoUsuario"], "is_admin" => $result["is_admin"]]);
+        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "usuario" => $result["nombre"], "correo" => $result["correo"], "userId" => $result["id"], "is_admin" => $result["is_admin"]]);
     } else {
         echo json_encode(["success" => false, "message" => "Correo o contraseña incorrectos"]);
     }
