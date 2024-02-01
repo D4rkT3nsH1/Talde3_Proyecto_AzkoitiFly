@@ -16,3 +16,28 @@ if (username) {
     $('#adminDrop').hide();
     $('#userDrop').hide();
 }
+
+function cerrarSesion() {
+    localStorage.clear(); // Eliminar todos los datos del localStorage
+    fetch('../../controller/cSingOut.php')
+        .then(response => response.text())
+        .then(data => {
+            data = JSON.parse(data);
+            if (data.success) {
+                // Mostrar toast de éxito al cerrar sesión
+                toastr.success(data.message);
+            } else {
+                toastr.error(data.message);
+            }
+
+            // Opcional: Redireccionar o realizar otras acciones después de cerrar sesión
+            setTimeout(function () {
+                window.location.href = "../html/index.html";
+            }, 1000);
+        })
+        .catch(error => {
+            // Mostrar toast de error si falla al cerrar sesión
+            console.error('Error al cerrar sesión:', error);
+            toastr.error("Error al cerrar sesión");
+        });
+}
