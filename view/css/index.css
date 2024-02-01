@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    font-family: 'Montserrat';
+}
+
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -10,14 +15,15 @@ header {
     color: #fff;
 }
 
-
 .container {
     max-width: 800px;
     margin: 0 auto;
 }
+
 #uno {
     display: flex;
 }
+
 #dos {
     display: flex;
     padding-bottom: 0;
@@ -38,10 +44,12 @@ header {
     line-height: 1.6;
     color: #333;
 }
+
 .fsec {
     width: 50%;
 
 }
+
 section {
     padding: 50px 0px 0px 80px;
 }
@@ -60,23 +68,29 @@ button:hover {
     background-color: #00264d;
 }
 
-.features, .loan-types, .contact {
+.features,
+.loan-types,
+.contact {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
 }
 
-.features h2, .loan-types h2, .contact h2 {
+.features h2,
+.loan-types h2,
+.contact h2 {
     color: #560070;
 }
 
-.features ul, .loan-types ul {
+.features ul,
+.loan-types ul {
     list-style-type: none;
     padding: 0;
 }
 
-.features li, .loan-types li {
+.features li,
+.loan-types li {
     margin-bottom: 10px;
 }
 
