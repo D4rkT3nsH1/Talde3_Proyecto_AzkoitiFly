@@ -285,7 +285,7 @@ function calcularPrestamoCarenciaCompleta(monto, plazo, interes, periodosCarenci
     return amortizacion;
 }
 
-// 
+// FUNCIONA
 function calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia) {
     const tasaInteres = interes / 100;
     let saldoPendiente = monto;
