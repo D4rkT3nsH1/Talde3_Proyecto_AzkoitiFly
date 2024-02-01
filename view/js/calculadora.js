@@ -23,36 +23,41 @@ function eleccionSistema(sistema, button) {
 }
 
 function mostrarTablaResultado(amortizacion) {
-    $("#tablaPrestamo").show();
+    if (sistemaSeleccionado) {
+        $("#tablaPrestamo").show();
+        $("#botonBorrarTabla").show();
+        const tablaPrestamo = document.getElementById("tablaPrestamo");
 
-    const tablaPrestamo = document.getElementById("tablaPrestamo");
+        // Crear la tabla y sus celdas
+        const tabla = document.createElement("table");
 
-    // Crear la tabla y sus celdas
-    const tabla = document.createElement("table");
-
-    // Encabezado
-    const filaEncabezado = tabla.insertRow(0);
-    Object.keys(amortizacion[0]).forEach((clave) => {
-        const celdaEncabezado = filaEncabezado.insertCell();
-        celdaEncabezado.textContent = clave;
-    });
-
-    // Datos
-    amortizacion.forEach((filaAmortizacion) => {
-        const fila = tabla.insertRow();
-        Object.values(filaAmortizacion).forEach((valor) => {
-            const celda = fila.insertCell();
-            celda.textContent = valor;
+        // Encabezado
+        const filaEncabezado = tabla.insertRow(0);
+        Object.keys(amortizacion[0]).forEach((clave) => {
+            const celdaEncabezado = filaEncabezado.insertCell();
+            celdaEncabezado.textContent = clave;
         });
-    });
 
-    // Limpiar la tabla anterior (si la hay) y agregar la nueva tabla
-    tablaPrestamo.innerHTML = "";
-    tablaPrestamo.appendChild(tabla);
+        // Datos
+        amortizacion.forEach((filaAmortizacion) => {
+            const fila = tabla.insertRow();
+            Object.values(filaAmortizacion).forEach((valor) => {
+                const celda = fila.insertCell();
+                celda.textContent = valor;
+            });
+        });
+
+        // Limpiar la tabla anterior (si la hay) y agregar la nueva tabla
+        tablaPrestamo.innerHTML = "";
+        tablaPrestamo.appendChild(tabla);
+    } else {
+        toastr.error("Por favor, selecciona un sistema de préstamo.");
+    }
 }
 
 function ocultarTablaResultado() {
     $("#tablaPrestamo").hide();
+    $("#botonBorrarTabla").hide();
 }
 
 function calcularPrestamo() {
@@ -363,7 +368,6 @@ function calcularAmortizacion(sistema, monto, plazo, interes, periodosCarencia) 
         case 'cParcial':
             return calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia);
         default:
-            alert("Sistema no reconocido");
             return [];
     }
 }
