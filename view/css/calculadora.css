@@ -10,13 +10,6 @@ body {
     background-color: #f4f4f4;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
 .tabs-container {
     width: 100%;
     max-width: 800px;
@@ -47,10 +40,10 @@ header {
 }
 
 .tab-button:hover {
-    background-color: #ccc;
+    background-color: #D3D3D3;
 }
 
-.tab-content.active {
+.tab-content.activado {
     display: block;
 }
 
@@ -58,15 +51,28 @@ header {
     display: none;
 }
 
-.active {
+.activado {
     background-color: #ccc;
 }
 
 #prestamoForm {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;
+}
+
+#prestamoForm>*:not(:first-child) {
+    margin-top: 10px;
+}
+
+.divBotones {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 }
 
 label {
@@ -83,23 +89,28 @@ input {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #333;
+.botonCalcu {
+    background-color: #111626;
     color: #fff;
     padding: 12px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    border-radius: 10px;
 }
 
-button:hover {
-    background-color: #555;
+.botonCalcu:hover {
+    background-color: #2a2f41;
 }
 
 #tablaPrestamo {
+    display: none;
     padding: 20px;
+}
+
+#botonBorrarTabla {
+    display: none;
 }
 
 table {
