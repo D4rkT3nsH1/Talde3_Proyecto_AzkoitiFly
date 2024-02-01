@@ -106,4 +106,22 @@ class usuario_model
             return false; // Error al registrar usuario
         }
     }
+    public function changePass($correo, $pass)
+    {
+        $this->OpenConnect();
+
+        $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+
+        $sql = "UPDATE usuario SET contraseña='$hashedPass' WHERE correo='$correo'";
+        $result = $this->conn->query($sql);
+
+        if ($result) {
+            if ($this->conn !== null) {
+                $this->CloseConnect();
+            }
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
