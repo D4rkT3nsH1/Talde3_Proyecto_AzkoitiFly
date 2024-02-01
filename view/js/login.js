@@ -122,10 +122,11 @@ function InicioSesion() {
                     console.log(response.usuario);
                     setTimeout(function () {
                         // Redireccionar a otra página
-                        if(response.is_admin==1){window.location.href = "../html/index.html";
-                    }else{
-                        window.location.href = "../html/index.html";
-                    }
+                        if (response.is_admin == 1) {
+                            window.location.href = "../html/CalculadoraPrestamos.html";
+                        } else {
+                            window.location.href = "../html/index.html";
+                        }
                     }, 1500);
                 } else {
                     // Si la operación falló, muestra un toast de error
@@ -174,7 +175,7 @@ function PassChange() {
                 response = JSON.parse(response);
                 if (response.success) {
                     // Si la operación fue exitosa, muestra un toast de éxito
-                        $("#myModal").fadeOut(550, function () {
+                    $("#myModal").fadeOut(550, function () {
                         // Limpia los campos después de ocultar el modal
                         $("#gmail_Rec_Pass").val("");
                         $("#pass_Rec_Pass").val("");
