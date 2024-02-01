@@ -1,17 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    font-family: 'Montserrat';
+}
+
 header {
     width: 100%;
+    height: 100px;
     position: sticky;
     top: 0;
-    z-index: 1000;
 }
 
 #barra {
     height: auto;
-    padding: 10px;
+    padding: 20px;
+    background-color: #111626;
 }
 
 #barra img {
-    height: 24px;
+    height: 30px;
     margin-left: 5px;
 }
 
@@ -32,11 +39,8 @@ header {
     margin-left: 5px;
 }
 
-#barra a:hover {
-    text-decoration: none;
-    background-color: black;
-    color: rgb(167, 23, 167);
-    cursor: pointer;
+.logButton {
+    color: white;
 }
 
 #userDrop,
@@ -55,8 +59,4 @@ header {
 .dropdown-item {
     display: flex;
     align-items: center;
-}
-
-.filtroActivo {
-    color: lightgreen !important;
 }

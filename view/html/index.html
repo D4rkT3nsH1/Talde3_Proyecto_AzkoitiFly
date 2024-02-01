@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="" type="image/x-icon">
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
   <!-- conexion con bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -17,7 +18,7 @@
 <body>
   <!-- cabecero de la pagina -->
   <header class="container-fluid">
-    <nav id="barra" class="row bg-black d-flex justify-content-around">
+    <nav id="barra" class="row d-flex justify-content-around">
       <div class="col-12 col-md-3 d-flex align-items-center">
         <a href="index.html">
           <img src="../img/icons/azkoiti_texto_sin_fondo_white.png">
@@ -26,19 +27,19 @@
       <ul class="col-12 col-md-8 list-unstyled m-0 d-flex align-items-center justify-content-end">
 
         <div id="logReg">
-          <li class="d-flex align-items-center">
+          <li class="d-flex align-items-center logButton">
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
             <a href="LoginRegistro.html" class="navTitles">Log-In / Sign-up</a>
           </li>
         </div>
 
-        <li class="nav-item dropdown" id="userDrop">
+        <li class="nav-item dropdown logButton" id="userDrop">
           <i class="fa-solid fa-user"></i>
           <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             User
           </a>
-          <ul class="dropdown-menu" style="background-color: black;">
+          <ul class="dropdown-menu">
             <li>
               <div class="dropContent dropItem">
                 <a class="dropdown-item" href="history.html">Orders history</a>
@@ -54,13 +55,13 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown" id="adminDrop">
+        <li class="nav-item dropdown logButton" id="adminDrop">
           <i class="fa-solid fa-user"></i>
           <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             User
           </a>
-          <ul class="dropdown-menu" style="background-color: black;">
+          <ul class="dropdown-menu">
             <li>
               <div class="dropContent dropItem">
                 <a class="dropdown-item" href="CalculadoraPrestamos.html"><i
@@ -86,18 +87,25 @@
   </header>
 
   <!-- contenido de la pagina divididos por secciones -->
-  <div id="uno">
-    <section class="fsec">
-      <h2>Préstamos Rápidos y Convenientes</h2>
-      <p>Bienvenido a Azkoiti, tu socio financiero donde ofrecemos soluciones financieras rápidas y flexibles para tus
-        necesidades. Ya sea que estés buscando un préstamo personal, de negocios o hipotecario, ¡estamos aquí para
-        ayudarte!</p>
-      <button href="CalculadoraPrestamos.html" class="navTitles" id="finanzasboton">Hacer Finanzas!!</button>
-    </section>
-    <img src="../img/icons/images.png">
-  </div>
-  <div id="dos">
-    <section>
+  <section>
+    <div class="elemento">
+      <div class="texto">
+        <h2>Préstamos Rápidos y Convenientes</h2>
+        <p>Bienvenido a Azkoiti, tu socio financiero donde ofrecemos soluciones financieras rápidas y flexibles para tus
+          necesidades. Ya sea que estés buscando un préstamo personal, de negocios o hipotecario, ¡estamos aquí para
+          ayudarte!</p>
+        <a href="CalculadoraPrestamos.html">
+          <button class="hacerFinanzas">Hacer Finanzas!!</button>
+        </a>
+      </div>
+      <div>
+        <img src="../img/icons/images.png">
+      </div>
+    </div>
+  </section>
+
+  <section class="listas">
+    <div class="elementoLista">
       <h2>¿Por Qué Elegir Azkoiti?</h2>
       <p>Nos destacamos por:</p>
       <ul>
@@ -106,9 +114,9 @@
         <li>Flexibilidad en términos de pago</li>
         <li>Proceso de solicitud sencillo</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <div class="elementoLista">
       <h2>Tipos de Préstamos que Ofrecemos</h2>
       <p>Ofrecemos una variedad de opciones de préstamos, incluyendo:</p>
       <ul>
@@ -117,14 +125,19 @@
         <li>Préstamos hipotecarios</li>
         <li>Préstamos de emergencia</li>
       </ul>
-    </section>
-  </div>
-  <section>
-    <h2>Contáctanos</h2>
-    <p>¿Tienes preguntas o necesitas asistencia? Contáctanos ahora mismo y nuestro equipo estará encantado de
-      ayudarte.</p>
-    <button>Contactar</button>
+    </div>
   </section>
+
+  <footer>
+    <div>
+      <h3>Contáctanos</h3>
+      <p>¿Tienes preguntas o necesitas asistencia? Contáctanos ahora mismo y nuestro equipo estará encantado de
+        ayudarte.</p>
+    </div>
+    <div>
+      <button href="formContacto.html" class="contactanos">Contactanos!!</button>
+    </div>
+  </footer>
 
   <!-- conexion con jquery y ajax -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

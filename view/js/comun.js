@@ -26,6 +26,7 @@ if (username) {
     $('#userDrop').hide();
 }
 
+// Función para cerrar sesión
 function cerrarSesion() {
     localStorage.clear(); // Eliminar todos los datos del localStorage
     fetch('../../controller/cSignOut.php')

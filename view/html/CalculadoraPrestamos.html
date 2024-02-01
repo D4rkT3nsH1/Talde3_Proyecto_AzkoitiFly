@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AZKOITI - Calculadora Prestamos</title>
   <link rel="shortcut icon" href="" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/calculadora.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
   <header class="container-fluid">
-    <nav id="barra" class="row bg-black d-flex justify-content-around">
+    <nav id="barra" class="row d-flex justify-content-around">
       <div class="col-12 col-md-3 d-flex align-items-center">
         <a href="index.html">
           <img src="../img/icons/azkoiti_texto_sin_fondo_white.png">
@@ -36,7 +36,7 @@
             aria-expanded="false">
             User
           </a>
-          <ul class="dropdown-menu" style="background-color: black;">
+          <ul class="dropdown-menu">
             <li>
               <div class="dropContent dropItem">
                 <a class="dropdown-item" href="history.html">Orders history</a>
@@ -58,7 +58,7 @@
             aria-expanded="false">
             User
           </a>
-          <ul class="dropdown-menu" style="background-color: black;">
+          <ul class="dropdown-menu">
             <li>
               <div class="dropContent dropItem">
                 <a class="dropdown-item" href="CalculadoraPrestamos.html"><i
@@ -93,19 +93,30 @@
     </div>
 
     <form id="prestamoForm">
-      <label for="monto">Monto del préstamo:</label>
-      <input type="number" id="monto" step="500" required>
+      <div>
+        <label for="monto">Monto del préstamo:</label>
+        <input type="number" id="monto" step="500" required>
+      </div>
 
-      <label for="plazo">Plazo (años):</label>
-      <input type="number" id="plazo" required>
+      <div>
+        <label for="plazo">Plazo (años):</label>
+        <input type="number" id="plazo" required>
+      </div>
 
-      <label for="plazo" class="periodo">Periodo (años):</label>
-      <input type="number" class="periodo" id="periodosCarencia">
+      <div class="periodo">
+        <label for="plazo">Periodo (años):</label>
+        <input type="number" id="periodosCarencia">
+      </div>
 
-      <label for="interes">Tasa de interés (%):</label>
-      <input type="number" id="interes" required>
+      <div>
+        <label for="interes">Tasa de interés (%):</label>
+        <input type="number" id="interes" required>
+      </div>
 
-      <button type="button" onclick="calcularPrestamo()">Calcular</button>
+      <div class="divBotones">
+        <button type="button" onclick="calcularPrestamo()" class="botonCalcu">Calcular</button>
+        <button type="button" onclick="ocultarTablaResultado()" class="botonCalcu" id="botonBorrarTabla">Borrar</button>
+      </div>
     </form>
 
     <div id="tablaPrestamo">

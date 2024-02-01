@@ -5,7 +5,7 @@ function eleccionSistema(sistema, button) {
 
     tabButtons = document.getElementsByClassName("tab-button");
     for (i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove("active");
+        tabButtons[i].classList.remove("activado");
     }
 
     sistemaSeleccionado = sistema;
@@ -19,10 +19,12 @@ function eleccionSistema(sistema, button) {
         $("#periodosCarencia").removeAttr("required");
     }
 
-    button.classList.add("active");
+    button.classList.add("activado");
 }
 
 function mostrarTablaResultado(amortizacion) {
+    $("#tablaPrestamo").show();
+
     const tablaPrestamo = document.getElementById("tablaPrestamo");
 
     // Crear la tabla y sus celdas
@@ -47,6 +49,10 @@ function mostrarTablaResultado(amortizacion) {
     // Limpiar la tabla anterior (si la hay) y agregar la nueva tabla
     tablaPrestamo.innerHTML = "";
     tablaPrestamo.appendChild(tabla);
+}
+
+function ocultarTablaResultado() {
+    $("#tablaPrestamo").hide();
 }
 
 function calcularPrestamo() {
@@ -336,7 +342,7 @@ function calcularPrestamoCarenciaParcial(monto, plazo, interes, periodosCarencia
         });
 
     }
-    
+
 
     return amortizacion;
 }
