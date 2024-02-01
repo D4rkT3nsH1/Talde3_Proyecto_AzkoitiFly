@@ -122,7 +122,7 @@ function InicioSesion() {
                     console.log(response.usuario);
                     setTimeout(function () {
                         // Redireccionar a otra página
-                        if(response.is_admin==1){window.location.href = "../html/CalculadoraPrestamos.html";
+                        if(response.is_admin==1){window.location.href = "../html/index.html";
                     }else{
                         window.location.href = "../html/index.html";
                     }
