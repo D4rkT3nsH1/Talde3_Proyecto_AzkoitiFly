@@ -1,0 +1,62 @@
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#barra {
+    height: auto;
+    padding: 10px;
+}
+
+#barra img {
+    height: 24px;
+    margin-left: 5px;
+}
+
+#barra li {
+    margin-right: 20px;
+}
+
+#barra a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    margin-left: 5px;
+}
+
+#barra h3 a {
+    height: 50px;
+    line-height: 50px;
+    margin-left: 5px;
+}
+
+#barra a:hover {
+    text-decoration: none;
+    background-color: black;
+    color: rgb(167, 23, 167);
+    cursor: pointer;
+}
+
+#userDrop,
+#adminDrop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dropContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.filtroActivo {
+    color: lightgreen !important;
+}
