@@ -117,12 +117,12 @@ function InicioSesion() {
                     localStorage.setItem('correoUsuario', response.correoUsuario);
                     localStorage.setItem('idUsuario', response.idUsuario);
                     localStorage.setItem('usuario', response.usuario);
-                    localStorage.setItem('isadmin', response.admin);
+                    localStorage.setItem('is_admin', response.is_admin);
                     toastr.success(response.usuario, response.message);
                     console.log(response.usuario);
                     setTimeout(function () {
                         // Redireccionar a otra página
-                        if(isadmin==1){window.location.href = "../html/CalculadoraPrestamos.html";
+                        if(response.is_admin==1){window.location.href = "../html/CalculadoraPrestamos.html";
                     }else{
                         window.location.href = "../html/index.html";
                     }
