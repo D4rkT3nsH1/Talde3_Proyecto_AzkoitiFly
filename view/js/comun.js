@@ -11,6 +11,15 @@ if (username) {
         $('#adminDrop').hide();
         $('#userDrop').show();
     }
+    // Obtén todos los elementos 'a' dentro de 'li' dentro de '#barra ul'
+    var userElements = document.querySelectorAll('#barra ul li a');
+
+    // Itera sobre los elementos y actualiza el texto si es necesario
+    userElements.forEach(function (element) {
+        if (element.textContent.includes('User')) {
+            element.textContent = username;
+        }
+    });
 } else {
     $('#logReg').show();
     $('#adminDrop').hide();
