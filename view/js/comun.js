@@ -28,7 +28,7 @@ if (username) {
 
 function cerrarSesion() {
     localStorage.clear(); // Eliminar todos los datos del localStorage
-    fetch('../../controller/cSingOut.php')
+    fetch('../../controller/cSignOut.php')
         .then(response => response.text())
         .then(data => {
             data = JSON.parse(data);
