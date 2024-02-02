@@ -38,13 +38,13 @@ CREATE TABLE `usuario` (
 -- Estructura para la tabla `prestamos`
 --
 CREATE TABLE `prestamos` (
-  `id_user` INT(10) NOT NULL,
-  `id_pres` INT(10) NOT NULL,
+  `id_user` INT(11) NOT NULL,
+  `id_pres` INT(11) NOT NULL,
   `monto` INT,
   `cant_pagadade` INT,
   `fec_ini` DATE, 
   `fec_fin` DATE
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 --
@@ -69,7 +69,7 @@ ALTER TABLE `usuario`
 -- Indices de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  ADD PRIMARY KEY (`id_pres`)
+  ADD PRIMARY KEY (`id_pres`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
