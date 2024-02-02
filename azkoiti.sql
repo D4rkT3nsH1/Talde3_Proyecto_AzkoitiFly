@@ -24,23 +24,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura para la tabla `usuario`
 --
-
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `is_admin` bit(1) DEFAULT b'0',
-  `nombre` varchar(255) DEFAULT NULL,
-  `correo` varchar(255) DEFAULT NULL,
-  `contraseña` varchar(255) DEFAULT NULL
+  `id_user` INT(11) NOT NULL,
+  `is_admin` BIT(1) DEFAULT b'0',
+  `nombre` VARCHAR(255) DEFAULT NULL,
+  `correo` VARCHAR(255) DEFAULT NULL,
+  `contraseña` VARCHAR(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Estructura para la tabla `prestamos`
+--
+CREATE TABLE `prestamos` (
+  `id_user` INT(10) NOT NULL,
+  `id_pres` INT(10) NOT NULL,
+  `monto` INT,
+  `cant_pagadade` INT,
+  `fec_ini` DATE, 
+  `fec_fin` DATE
+)
+
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `is_admin`, `nombre`, `correo`, `contraseña`) VALUES
-(2, b'0', 'juanjo', 'popo@gmail.com', '$2y$10$CWl7xpM/VhwqqaKhD02KiuitIYcxNmpm9b1yyp3oVXophsLfH1LlC');
+--
+-- Volcado de datos para la tabla `prestamos`
+--
 
 --
 -- Índices para tablas volcadas
@@ -50,7 +63,13 @@ INSERT INTO `usuario` (`id`, `is_admin`, `nombre`, `correo`, `contraseña`) VALU
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indices de la tabla `prestamos`
+--
+ALTER TABLE `prestamos`
+  ADD PRIMARY KEY (`id_pres`)
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -60,8 +79,16 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+--
+-- AUTO_INCREMENT de la tabla `prestamos`
+--
+ALTER TABLE `prestamos`
+  MODIFY `id_pres` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

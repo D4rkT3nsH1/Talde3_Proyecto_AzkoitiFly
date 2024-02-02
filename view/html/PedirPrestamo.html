@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZKOITI - Calculadora Prestamos</title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/calculadora.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+
+<body>
+    <header class="container-fluid">
+        <nav id="barra" class="row d-flex justify-content-around">
+            <div class="col-12 col-md-3 d-flex align-items-center">
+                <a href="index.html">
+                    <img src="../img/icons/azkoiti_texto_sin_fondo_white.png">
+                </a>
+            </div>
+            <ul class="col-12 col-md-8 list-unstyled m-0 d-flex align-items-center justify-content-end">
+
+                <div id="logReg">
+                    <li class="d-flex align-items-center logButton">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        <a href="LoginRegistro.html" class="navTitles">Log-In / Sign-up</a>
+                    </li>
+                </div>
+
+                <li class="nav-item dropdown logButton" id="userDrop">
+                    <i class="fa-solid fa-user"></i>
+                    <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        User
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="dropContent dropItem">
+                                <a class="dropdown-item" href="PedirPrestamo.html">
+                                    <div id="menuUser">
+                                        <i class="fa-regular fa-clipboard"></i>
+                                        <span>Préstamos</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropContent dropItem">
+                                <a class="dropdown-item" onclick="cerrarSesion()">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span>Log Out</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown logButton" id="adminDrop">
+                    <i class="fa-solid fa-user"></i>
+                    <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        User
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="dropContent dropItem">
+                                <a class="dropdown-item" href="CalculadoraPrestamos.html">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-calculator"></i>
+                                        <span>Calculadora</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropContent dropItem">
+                                <a class="dropdown-item" href="#">
+                                    <div id="menuUser">
+                                        <i class="fa-regular fa-clipboard"></i>
+                                        <span>Préstamos</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropContent dropItem">
+                                <a class="dropdown-item" onclick="cerrarSesion()">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span>Log Out</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="tabs-container">
+
+
+        <form id="prestamoForm">
+            <div>
+                <label for="rango">Monto del préstamo:</label>
+                <input type="range" id="rango" name="rango" min="250" max="50000" step="250" value="250" required>
+                <p>Valor seleccionado: <span id="valorSeleccionado"><b>250 €</b></span></p>
+            </div>
+            <div class="divBotones">
+                <button type="button" onclick="calcularPrestamo()" class="botonCalcu">Pedir prestamo</button>
+                <button type="button" onclick="ocultarTablaResultado()" class="botonCalcu"
+                    id="botonBorrarTabla">Borrar</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="../js/calculadora.js"></script>
+    <script src="../js/comun.js"></script>
+    <script src="https://kit.fontawesome.com/54820bdf60.js" crossorigin="anonymous"></script>
+    <script>
+        // JavaScript para actualizar el valor seleccionado en tiempo real
+        var rangoInput = document.getElementById('rango');
+        var valorSeleccionadoSpan = document.getElementById('valorSeleccionado');
+
+        rangoInput.addEventListener('input', function () {
+            valorSeleccionadoSpan.textContent = rangoInput.value;
+        });
+    </script>
+
+</body>
+
+</html>

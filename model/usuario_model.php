@@ -55,7 +55,7 @@ class usuario_model
 
             // Verificar la contraseña usando password_verify()
             if (password_verify($pass, $row['contraseña'])) {
-                $datosUser["id"] = $row['id'];
+                $datosUser["id"] = $row['id_user'];
                 $datosUser["is_admin"] = $row['is_admin'];
                 $datosUser["correo"] = $row['correo'];
                 $datosUser["nombre"] = $row['nombre'];
@@ -89,19 +89,10 @@ class usuario_model
         $result = $this->conn->query($sql);
 
         if ($result) {
-            $insertedId = $this->conn->insert_id;
-            $userData = array(
-                "idUsuario" => $insertedId,
-                "correoUsuario" => $correo,
-                "nameUsuario" => $name,
-                "is_admin" => 0 // Puedes ajustar este valor según tus necesidades
-            );
-
             if ($this->conn !== null) {
                 $this->CloseConnect();
             }
-
-            return $userData;
+            return true;
         } else {
             return false; // Error al registrar usuario
         }
@@ -120,7 +111,7 @@ class usuario_model
                 $this->CloseConnect();
             }
             return true;
-        }else {
+        } else {
             return false;
         }
     }
