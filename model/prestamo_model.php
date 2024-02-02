@@ -22,6 +22,35 @@ class prestamo_model
         $this->conn = null;
     }
 
+    public function getAllPrestamos()
+    {
+        $this->OpenConnect();
+
+        $sql = "SELECT * FROM prestamo";
+        $result = $this->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $prestamo_array = array();
+            while ($row = $result->fetch_assoc()) {
+                $prestamo = new prestamo_class();
+                $prestamo->setIdUsuario($row['id_user']);
+                $prestamo->setIdPrestamo($row['id_pres']);
+                $prestamo->setMontoPrestamo($row['monto']);
+                $prestamo->setCantPagada($row['cant_pagada']);
+                $prestamo->setFechaInicio($row['fec_ini']);
+                $prestamo->setFechaFin($row['fec_fin']);
+                $prestamo->setEstado($row['estado']);
+                array_push($prestamo_array, $prestamo);
+            }
+            if ($this->conn !== null) {
+                $this->CloseConnect();
+            }
+            return $prestamo_array;
+        } else {
+            return false;
+        }
+    }
+
     public function PrestamoByUsuario($idUsuario)
     {
         $this->OpenConnect();
@@ -33,10 +62,12 @@ class prestamo_model
             $prestamo_array = array();
             while ($row = $result->fetch_assoc()) {
                 $prestamo = new prestamo_class();
-                $prestamo->setIdPrestamo($row['idPrestamo']);
-                $prestamo->setIdUsuario($row['idUsuario']);
-                $prestamo->setFechaInicio($row['fechaInicio']);
-                $prestamo->setFechaFin($row['fechaFin']);
+                $prestamo->setIdUsuario($row['id_user']);
+                $prestamo->setIdPrestamo($row['id_pres']);
+                $prestamo->setMontoPrestamo($row['monto']);
+                $prestamo->setCantPagada($row['cant_pagada']);
+                $prestamo->setFechaInicio($row['fec_ini']);
+                $prestamo->setFechaFin($row['fec_fin']);
                 $prestamo->setEstado($row['estado']);
                 array_push($prestamo_array, $prestamo);
             }

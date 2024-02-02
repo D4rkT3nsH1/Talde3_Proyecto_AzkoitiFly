@@ -3,6 +3,8 @@ class prestamo_class
 {
     private $idPrestamo;
     private $idUsuario;
+    private $montoPrestamo;
+    private $cantPagada;
     private $fechaInicio;
     private $fechaFin;
     private $estado;
@@ -26,6 +28,26 @@ class prestamo_class
     public function setIdUsuario($idUsuario)
     {
         $this->idUsuario = $idUsuario;
+    }
+
+    public function getMontoPrestamo()
+    {
+        return $this->montoPrestamo;
+    }
+
+    public function setMontoPrestamo($montoPrestamo)
+    {
+        $this->montoPrestamo = $montoPrestamo;
+    }
+
+    public function getCantPagada()
+    {
+        return $this->cantPagada;
+    }
+
+    public function setCantPagada($cantPagada)
+    {
+        $this->cantPagada = $cantPagada;
     }
 
     public function getFechaInicio()
