@@ -227,17 +227,19 @@ function calcularPrestamoFrances(monto, plazo, interes) {
         C: saldoPendiente.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
     });
 
+    let M = 0;
     for (let año = 1; año <= plazo; año++) {
         const interesAnual = saldoPendiente * tasaInteres;
         const amortizacionAnual = cuotaAnual - interesAnual;
         const saldoRestante = saldoPendiente - amortizacionAnual;
+        M = M + amortizacionAnual;
 
         amortizacion.push({
             Aldiak: año,
             a: cuotaAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
             I: interesAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
             A: amortizacionAnual.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
-            M: (cuotaAnual * año).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
+            M: M.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
             C: saldoRestante.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' € ',
         });
 

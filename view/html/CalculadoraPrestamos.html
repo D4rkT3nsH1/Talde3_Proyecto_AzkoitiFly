@@ -24,13 +24,13 @@
       <ul class="col-12 col-md-8 list-unstyled m-0 d-flex align-items-center justify-content-end">
 
         <div id="logReg">
-          <li class="d-flex align-items-center">
+          <li class="d-flex align-items-center logButton">
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
             <a href="LoginRegistro.html" class="navTitles">Log-In / Sign-up</a>
           </li>
         </div>
 
-        <li class="nav-item dropdown" id="userDrop">
+        <li class="nav-item dropdown logButton" id="userDrop">
           <i class="fa-solid fa-user"></i>
           <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -39,20 +39,20 @@
           <ul class="dropdown-menu">
             <li>
               <div class="dropContent dropItem">
-                <a class="dropdown-item" href="history.html">Orders history</a>
+                <a class="dropdown-item" href="history.html">Prestamos</a>
                 <ion-icon class="text-white" name="book-outline"></ion-icon>
               </div>
             </li>
             <li>
               <div class="dropContent dropItem">
-                <a class="dropdown-item" onclick="cerrarSesion()">Log Out</a>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <a class="dropdown-item" onclick="cerrarSesion()"><i class="fa-solid fa-arrow-right-from-bracket">Log
+                    Out</i></a>
               </div>
             </li>
           </ul>
         </li>
 
-        <li class="nav-item dropdown" id="adminDrop">
+        <li class="nav-item dropdown logButton" id="adminDrop">
           <i class="fa-solid fa-user"></i>
           <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -67,14 +67,13 @@
             </li>
             <li>
               <div class="dropContent dropItem">
-                <a class="dropdown-item" href="#">Prestamos pendientes</a>
-
+                <a class="dropdown-item" href="#"><i class="fa-regular fa-clipboard"></i>Préstamos pendientes</a>
               </div>
             </li>
             <li>
               <div class="dropContent dropItem">
-                <a class="dropdown-item" onclick="cerrarSesion()">Log Out</a>
-
+                <a class="dropdown-item" onclick="cerrarSesion()"><i
+                    class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
               </div>
             </li>
           </ul>
@@ -82,6 +81,7 @@
       </ul>
     </nav>
   </header>
+
   <div class="tabs-container">
     <div class="tab-buttons">
       <button class="tab-button" onclick="eleccionSistema('simple', this)">Simple</button>
