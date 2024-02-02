@@ -4,6 +4,10 @@
     font-family: 'Montserrat';
 }
 
+i {
+    color: white;
+}
+
 header {
     width: 100%;
     height: 100px;
@@ -56,7 +60,17 @@ header {
     align-items: center;
 }
 
+.dropdown-menu {
+    background-color: #111626;
+}
+
 .dropdown-item {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #2a2f41;
 }
