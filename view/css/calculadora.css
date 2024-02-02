@@ -1,15 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-* {
-    font-family: 'Montserrat';
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #dfdfdf;
-}
-
 .tabs-container {
     width: 100%;
     max-width: 800px;
@@ -114,32 +102,4 @@ input {
 
 #botonBorrarTabla {
     display: none;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tr:nth-child(odd) {
-    background-color: #efefef;
-}
-
-tr:nth-child(even) {
-    background-color: #e3e3e3;
 }
