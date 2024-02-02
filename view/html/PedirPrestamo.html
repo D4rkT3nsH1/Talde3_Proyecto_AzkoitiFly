@@ -24,13 +24,13 @@
             <ul class="col-12 col-md-8 list-unstyled m-0 d-flex align-items-center justify-content-end">
 
                 <div id="logReg">
-                    <li class="d-flex align-items-center">
+                    <li class="d-flex align-items-center logButton">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                         <a href="LoginRegistro.html" class="navTitles">Log-In / Sign-up</a>
                     </li>
                 </div>
 
-                <li class="nav-item dropdown" id="userDrop">
+                <li class="nav-item dropdown logButton" id="userDrop">
                     <i class="fa-solid fa-user"></i>
                     <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -39,20 +39,28 @@
                     <ul class="dropdown-menu">
                         <li>
                             <div class="dropContent dropItem">
-                                <a class="dropdown-item" href="history.html">Orders history</a>
-                                <ion-icon class="text-white" name="book-outline"></ion-icon>
+                                <a class="dropdown-item" href="PedirPrestamo.html">
+                                    <div id="menuUser">
+                                        <i class="fa-regular fa-clipboard"></i>
+                                        <span>Préstamos</span>
+                                    </div>
+                                </a>
                             </div>
                         </li>
                         <li>
                             <div class="dropContent dropItem">
-                                <a class="dropdown-item" onclick="cerrarSesion()">Log Out</a>
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <a class="dropdown-item" onclick="cerrarSesion()">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span>Log Out</span>
+                                    </div>
+                                </a>
                             </div>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown" id="adminDrop">
+                <li class="nav-item dropdown logButton" id="adminDrop">
                     <i class="fa-solid fa-user"></i>
                     <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -61,20 +69,32 @@
                     <ul class="dropdown-menu">
                         <li>
                             <div class="dropContent dropItem">
-                                <a class="dropdown-item" href="CalculadoraPrestamos.html"><i
-                                        class="fa-solid fa-calculator"></i>Calculadora</a>
+                                <a class="dropdown-item" href="CalculadoraPrestamos.html">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-calculator"></i>
+                                        <span>Calculadora</span>
+                                    </div>
+                                </a>
                             </div>
                         </li>
                         <li>
                             <div class="dropContent dropItem">
-                                <a class="dropdown-item" href="#">Prestamos pendientes</a>
-
+                                <a class="dropdown-item" href="#">
+                                    <div id="menuUser">
+                                        <i class="fa-regular fa-clipboard"></i>
+                                        <span>Préstamos</span>
+                                    </div>
+                                </a>
                             </div>
                         </li>
                         <li>
                             <div class="dropContent dropItem">
-                                <a class="dropdown-item" onclick="cerrarSesion()">Log Out</a>
-
+                                <a class="dropdown-item" onclick="cerrarSesion()">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        <span>Log Out</span>
+                                    </div>
+                                </a>
                             </div>
                         </li>
                     </ul>
