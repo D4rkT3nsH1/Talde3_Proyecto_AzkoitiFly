@@ -26,10 +26,6 @@ header {
     margin-left: 5px;
 }
 
-#barra li {
-    margin-right: 20px;
-}
-
 #barra a {
     margin-right: 20px;
     text-decoration: none;
@@ -54,22 +50,29 @@ header {
     align-items: center;
 }
 
-.dropContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .dropdown-menu {
     background-color: #111626;
+    width: 200px;
+}
+
+.dropdown-menu>li {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.dropItem {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .dropdown-item {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .dropdown-item:hover {
     background-color: #2a2f41;
+    cursor: pointer;
 }
