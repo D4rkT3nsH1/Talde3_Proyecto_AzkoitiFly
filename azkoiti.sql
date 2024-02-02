@@ -43,7 +43,8 @@ CREATE TABLE `prestamos` (
   `monto` INT,
   `cant_pagadade` INT,
   `fec_ini` DATE, 
-  `fec_fin` DATE
+  `fec_fin` DATE,
+  `estado` BIT(1) DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
