@@ -67,6 +67,10 @@ header {
     width: 100%;
 }
 
+#menuUser>span {
+    margin-left: 10px;
+}
+
 .dropdown-item {
     display: flex;
     justify-content: flex-start;
