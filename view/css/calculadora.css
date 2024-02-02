@@ -7,7 +7,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #dfdfdf;
 }
 
 .tabs-container {
@@ -22,7 +22,6 @@ body {
 
 .tab-buttons {
     display: flex;
-    background-color: #f1f1f1;
     border-radius: 5px 5px 0 0;
 }
 
@@ -34,13 +33,13 @@ body {
     outline: none;
     font-size: 16px;
     border: none;
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: #111626;
+    color: white;
     transition: background-color 0.3s ease;
 }
 
 .tab-button:hover {
-    background-color: #D3D3D3;
+    background-color: #2a2f41;
 }
 
 .tab-content.activado {
@@ -52,7 +51,7 @@ body {
 }
 
 .activado {
-    background-color: #ccc;
+    background-color: #2a2f41;
 }
 
 #prestamoForm {
