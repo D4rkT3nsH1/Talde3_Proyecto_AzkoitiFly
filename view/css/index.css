@@ -11,8 +11,7 @@ section {
 }
 
 
-.hacerFinanzas,
-.contactanos {
+.hacerFinanzas {
     background-color: #111626;
     color: white;
     padding: 10px 20px;
@@ -24,8 +23,4 @@ section {
 .hacerFinanzas {
     border: none;
     border-radius: 10px;
-}
-
-button:hover {
-    background-color: #2a2f41;
 }

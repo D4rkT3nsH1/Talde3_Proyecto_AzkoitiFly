@@ -10,6 +10,10 @@ body {
     background-color: #dfdfdf;
 }
 
+button:hover {
+    background-color: #2a2f41;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
