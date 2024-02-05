@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/comun.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="../css/pedir.css">
 </head>
 
 <body>
@@ -106,16 +107,32 @@
     </header>
     <div class="tabs-container">
         <form id="prestamoForm">
+            <h1>SOLICITE SU PRESTAMO</h1>
             <div>
-                <label for="rango">Monto del préstamo:</label>
-                <input type="range" id="rango" name="rango" min="250" max="50000" step="250" value="250" required>
-                <p>Valor seleccionado: <span id="valorSeleccionado"><b>250 €</b></span></p>
+                <span style="display:none" id="valorSeleccionado"><b></b></span></p>
+                <p>Elija su prestamo: </p>
+                <div class="prestam">
+                    <input type="button" class="botones" value="-">
+                    <input type="range" id="rango" name="rango" style="width: 80%" min="250" max="50000" step="250" value="250" required>
+                    <input type="button" class="botones" value="+">
+                    <p id="boton" style="margin-left: 10px; margin-top: 7px;">250€</p>
+                </div>
+                <br>
+                <p>Elija la mensualidad: </p>
+                <div class="prestam">
+                    <input type="button" class="botones" value="-">
+                    <input type="range" id="rango" name="rango" style="width: 80%" min="250" max="50000" step="250" value="250" required>
+                    <input type="button" class="botones" value="+">
+                    <p id="boton" style="margin-left: 10px; margin-top: 7px;">1</p>
+                </div>
             </div>
+            <h6 style="font-style: italic">¡Todos los prestamos tendrán un interés del 10 % junto al sistema simple!</h6>
             <div class="divBotones">
-                <button type="button" onclick="calcularPrestamo()" class="botonCalcu">Pedir prestamo</button>
-                <button type="button" onclick="ocultarTablaResultado()" class="botonCalcu"
+                <input type="submit" value="SOLICITAR" style="background-color:#2a2f41; color: white; font-weight: bold;" id="boton" onclick="calcularPrestamo()">
+                <button type="button"  onclick="ocultarTablaResultado()" class="botonCalcu"
                     id="botonBorrarTabla">Borrar</button>
             </div>
+            
         </form>
     </div>
 
