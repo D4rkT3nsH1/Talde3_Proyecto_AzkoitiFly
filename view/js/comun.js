@@ -3,6 +3,23 @@ var username = localStorage.getItem('usuario');
 var isAdmin = localStorage.getItem('is_admin');
 
 if (username) {
+    fetch('../../controller/cCookieController.php')
+        .then(response => response.text())
+        .then(data => {
+            data = JSON.parse(data);
+            if (data.success) {
+                // Mostrar toast de éxito al cerrar sesión
+                toastr.warning(data.message);
+                localStorage.clear(); // Eliminar todos los datos del localStorage
+            } else {
+                toastr.error(data.message);
+            }
+
+            // Opcional: Redireccionar o realizar otras acciones después de cerrar sesión
+            setTimeout(function () {
+                window.location.href = "../html/index.html";
+            }, 1000);
+        })
     $('#logReg').hide();
     if (isAdmin === "1") {
         $('#adminDrop').show();
