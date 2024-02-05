@@ -18,15 +18,18 @@ class usuario_model
 
     public function CloseConnect()
     {
-        $this->conn = null;
+        $this->conn->close();
     }
 
     public function UserByCorreo($correo)
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
-        $result = $this->conn->query($sql);
+        $sql = "SELECT * FROM usuario WHERE correo = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -34,11 +37,12 @@ class usuario_model
             $usuario_array['correoUsuario'] = $row['correoUsuario'];
             $usuario_array['nameUsuario'] = $row['nameUsuario'];
             $usuario_array['passUsuario'] = $row['passUsuario'];
-            if ($this->conn !== null) {
-                $this->CloseConnect();
-            }
+            $stmt->close();
+            $this->CloseConnect();
             return $usuario_array;
         } else {
+            $stmt->close();
+            $this->CloseConnect();
             return false;
         }
     }
@@ -47,8 +51,11 @@ class usuario_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM usuario WHERE correo = '$correo'";
-        $result = $this->conn->query($sql);
+        $sql = "SELECT * FROM usuario WHERE correo = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $correo);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -59,13 +66,13 @@ class usuario_model
                 $datosUser["is_admin"] = $row['is_admin'];
                 $datosUser["correo"] = $row['correo'];
                 $datosUser["nombre"] = $row['nombre'];
-
-                if ($this->conn !== null) {
-                    $this->CloseConnect();
-                }
+                $stmt->close();
+                $this->CloseConnect();
                 return $datosUser;
             }
         }
+        $stmt->close();
+        $this->CloseConnect();
         return false; // Correo o contraseña incorrectos
     }
 
@@ -85,33 +92,40 @@ class usuario_model
         $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
 
         // Insertar nuevo usuario con la contraseña cifrada
-        $sql = "INSERT INTO usuario (correo, nombre, contraseña) VALUES ('$correo', '$name', '$hashedPass')";
-        $result = $this->conn->query($sql);
+        $sql = "INSERT INTO usuario (correo, nombre, contraseña) VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sss", $correo, $name, $hashedPass);
+        $result = $stmt->execute();
 
         if ($result) {
-            if ($this->conn !== null) {
-                $this->CloseConnect();
-            }
+            $stmt->close();
+            $this->CloseConnect();
             return true;
         } else {
+            $stmt->close();
+            $this->CloseConnect();
             return false; // Error al registrar usuario
         }
     }
+
     public function changePass($correo, $pass)
     {
         $this->OpenConnect();
 
         $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
 
-        $sql = "UPDATE usuario SET contraseña='$hashedPass' WHERE correo='$correo'";
-        $result = $this->conn->query($sql);
+        $sql = "UPDATE usuario SET contraseña=? WHERE correo=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ss", $hashedPass, $correo);
+        $result = $stmt->execute();
 
         if ($result) {
-            if ($this->conn !== null) {
-                $this->CloseConnect();
-            }
+            $stmt->close();
+            $this->CloseConnect();
             return true;
         } else {
+            $stmt->close();
+            $this->CloseConnect();
             return false;
         }
     }
