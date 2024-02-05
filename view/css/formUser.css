@@ -1,0 +1,16 @@
+#formContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Dos columnas de tamaño igual */
+    gap: 20px;
+    /* Espacio entre las columnas */
+}
+
+.form-outline {
+    width: 100%;
+}
+
+.form-outline label {
+    display: block;
+    margin-bottom: 5px;
+}
