@@ -24,7 +24,7 @@ try {
         $_SESSION['user'] = $result["nombre"]; // usuario
         $_SESSION['userId'] = $result["id"]; // idUsuario
         $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-        setcookie('user', $result["nombre"], time() + 120, "/"); // 86400 = 1 día
+        setcookie('user', $result["nombre"], time() + 86400, "/"); // 86400 = 1 día
     }
 
     // Retorna un mensaje JSON según el resultado
