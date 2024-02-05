@@ -23,12 +23,13 @@ try {
         $_SESSION['correo'] = $result["correo"];
         $_SESSION['user'] = $result["nombre"]; // usuario
         $_SESSION['userId'] = $result["id"]; // idUsuario
-        setcookie('user', $result["nombre"], time() + 30, "/"); // 86400 = 1 día
+        $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+        setcookie('user', $result["nombre"], time() + 120, "/"); // 86400 = 1 día
     }
 
     // Retorna un mensaje JSON según el resultado
     if ($result) {
-        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "usuario" => $result["nombre"], "correo" => $result["correo"], "userId" => $result["id"], "is_admin" => $result["is_admin"]]);
+        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "ip" => $_SESSION['ip'], "usuario" => $result["nombre"], "correo" => $result["correo"], "userId" => $result["id"], "is_admin" => $result["is_admin"]]);
     } else {
         echo json_encode(["success" => false, "message" => "Correo o contraseña incorrectos"]);
     }
