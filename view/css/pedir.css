@@ -1,0 +1,12 @@
+.prestam {
+    display: flex;
+
+}
+
+.botones {
+    width: 4%; font-weight: bold; background-color: #2a2f41; color: white;
+}
+
+h1 {
+    color: #2a2f41; font-weight: bold; font-style:inherit;
+}
