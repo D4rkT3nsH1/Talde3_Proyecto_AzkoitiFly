@@ -115,4 +115,35 @@ class usuario_model
             return false;
         }
     }
+
+    public function changeUserData($userId, $correo, $name, $pasahitza)
+    {
+        $this->OpenConnect();
+        $sql = "UPDATE usuarios SET correoUsuario='$correo', passUsuario='$pasahitza', nameUsuario='$name' WHERE idUsuario ='$userId'";
+        $result = $this->conn->query($sql);
+        if ($result) {
+            if ($this->conn !== null) {
+                $this->CloseConnect();
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function changeUserDataWoPass($userId, $correo, $name)
+    {
+        $this->OpenConnect();
+        $sql = "UPDATE usuarios SET correoUsuario='$correo', nameUsuario='$name' WHERE idUsuario ='$userId'";
+        $result = $this->conn->query($sql);
+        if ($result) {
+            if ($this->conn !== null) {
+                $this->CloseConnect();
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
