@@ -119,7 +119,7 @@ class usuario_model
     public function changeUserData($userId, $correo, $name, $pasahitza)
     {
         $this->OpenConnect();
-        $sql = "UPDATE usuarios SET correoUsuario='$correo', passUsuario='$pasahitza', nameUsuario='$name' WHERE idUsuario ='$userId'";
+        $sql = "UPDATE usuario SET correo='$correo', contraseña='$pasahitza', nombre='$name' WHERE id_user ='$userId'";
         $result = $this->conn->query($sql);
         if ($result) {
             if ($this->conn !== null) {
@@ -134,7 +134,7 @@ class usuario_model
     public function changeUserDataWoPass($userId, $correo, $name)
     {
         $this->OpenConnect();
-        $sql = "UPDATE usuarios SET correoUsuario='$correo', nameUsuario='$name' WHERE idUsuario ='$userId'";
+        $sql = "UPDATE usuario SET correo='$correo', nombre='$name' WHERE id_user ='$userId'";
         $result = $this->conn->query($sql);
         if ($result) {
             if ($this->conn !== null) {
