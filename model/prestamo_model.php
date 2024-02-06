@@ -19,7 +19,7 @@ class prestamo_model
 
     public function CloseConnect()
     {
-        $this->conn = null;
+        $this->conn->close();
     }
 
     public function getAllPrestamos()
@@ -42,11 +42,10 @@ class prestamo_model
                 $prestamo->setEstado($row['estado']);
                 array_push($prestamo_array, $prestamo);
             }
-            if ($this->conn !== null) {
-                $this->CloseConnect();
-            }
+            $this->CloseConnect();
             return $prestamo_array;
         } else {
+            $this->CloseConnect();
             return false;
         }
     }
@@ -55,8 +54,11 @@ class prestamo_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM prestamo WHERE idUsuario = '$idUsuario'";
-        $result = $this->conn->query($sql);
+        $sql = "SELECT * FROM prestamo WHERE idUsuario = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $idUsuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $prestamo_array = array();
@@ -71,11 +73,12 @@ class prestamo_model
                 $prestamo->setEstado($row['estado']);
                 array_push($prestamo_array, $prestamo);
             }
-            if ($this->conn !== null) {
-                $this->CloseConnect();
-            }
+            $stmt->close();
+            $this->CloseConnect();
             return $prestamo_array;
         } else {
+            $stmt->close();
+            $this->CloseConnect();
             return false;
         }
     }
