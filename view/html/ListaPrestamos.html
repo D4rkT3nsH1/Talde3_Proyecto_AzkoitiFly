@@ -52,6 +52,16 @@
             </li>
             <li>
               <div class="dropContent dropItem">
+                <a class="dropdown-item" href="form.html">
+                  <div id="menuUser">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Config Usuario</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="dropContent dropItem">
                 <a class="dropdown-item" onclick="cerrarSesion()">
                   <div id="menuUser">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -92,6 +102,16 @@
             </li>
             <li>
               <div class="dropContent dropItem">
+                <a class="dropdown-item" href="form.html">
+                  <div id="menuUser">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Config Usuario</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="dropContent dropItem">
                 <a class="dropdown-item" onclick="cerrarSesion()">
                   <div id="menuUser">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -110,30 +130,30 @@
   <div class="modal fade" id="editarPrestamoModal" tabindex="-1" aria-labelledby="editarPrestamoModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarPrestamoModalLabel">Editar Préstamo</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editarPrestamoForm">
-                    <div class="mb-3">
-                        <label for="cantPagada" class="form-label">Cantidad a pagar</label>
-                        <input type="number" class="form-control" id="cantPagada" name="cantPagada">
-                    </div>
-                    <div class="mb-3">
-                        <label for="importe" class="form-label">Importe</label>
-                        <input type="number" class="form-control" id="importe" name="importe">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="guardarCambiosBtn">Guardar Cambios</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarPrestamoModalLabel">Editar Préstamo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <form id="editarPrestamoForm">
+            <div class="mb-3">
+              <label for="cantPagada" class="form-label">Cantidad a pagar</label>
+              <input type="number" class="form-control" id="cantPagada" name="cantPagada">
+            </div>
+            <div class="mb-3">
+              <label for="importe" class="form-label">Importe</label>
+              <input type="number" class="form-control" id="importe" name="importe">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="guardarCambiosBtn">Guardar Cambios</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 
   <div class="container">
