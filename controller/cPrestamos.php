@@ -7,9 +7,15 @@ try {
     // Intenta realizar la inserción
     $result = $Prestamo_Model->getAllPrestamos();
 
+    // Convertir objetos prestamo_class a arrays asociativos
+    $prestamosArray = [];
+    foreach ($result as $prestamo) {
+        $prestamosArray[] = $prestamo->toArray();
+    }
+
     // Retorna un mensaje JSON según el resultado
     if ($result) {
-        echo json_encode(["success" => true, "message" => "Prestamos encontrados!", "prestamos" => $result]);
+        echo json_encode(["success" => true, "message" => "Prestamos encontrados!", "prestamos" => $prestamosArray]);
     } else {
         echo json_encode(["success" => false, "message" => "No se encontraron prestamos."]);
     }

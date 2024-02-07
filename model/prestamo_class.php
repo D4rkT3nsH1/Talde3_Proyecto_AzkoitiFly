@@ -90,4 +90,18 @@ class prestamo_class
     {
         $this->estado = $estado;
     }
+
+    public function toArray()
+    {
+        return [
+            'idPrestamo' => $this->idPrestamo,
+            'NombreUsuario' => $this->NombreUsuario,
+            'CorreoUsuario' => $this->CorreoUsuario,
+            'montoPrestamo' => $this->montoPrestamo,
+            'cantPagada' => $this->cantPagada,
+            'fechaInicio' => $this->fechaInicio,
+            'fechaFin' => $this->fechaFin,
+            'estado' => $this->estado
+        ];
+    }
 }
