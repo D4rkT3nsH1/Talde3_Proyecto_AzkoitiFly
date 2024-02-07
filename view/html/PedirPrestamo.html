@@ -52,6 +52,16 @@
                         </li>
                         <li>
                             <div class="dropContent dropItem">
+                                <a class="dropdown-item" href="form.html">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-gear"></i>
+                                        <span>Config Usuario</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropContent dropItem">
                                 <a class="dropdown-item" onclick="cerrarSesion()">
                                     <div id="menuUser">
                                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -92,6 +102,16 @@
                         </li>
                         <li>
                             <div class="dropContent dropItem">
+                                <a class="dropdown-item" href="form.html">
+                                    <div id="menuUser">
+                                        <i class="fa-solid fa-gear"></i>
+                                        <span>Config Usuario</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropContent dropItem">
                                 <a class="dropdown-item" onclick="cerrarSesion()">
                                     <div id="menuUser">
                                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -105,6 +125,7 @@
             </ul>
         </nav>
     </header>
+
     <div class="tabs-container">
         <form id="prestamoForm">
             <h1>SOLICITE SU PRESTAMO</h1>
@@ -113,7 +134,8 @@
                 <p>Elija su prestamo: </p>
                 <div class="prestam">
                     <input type="button" class="botones" value="-">
-                    <input type="range" id="rango" name="rango" style="width: 80%" min="250" max="50000" step="250" value="250" required>
+                    <input type="range" id="rango" name="rango" style="width: 80%" min="250" max="50000" step="250"
+                        value="250" required>
                     <input type="button" class="botones" value="+">
                     <p id="boton" style="margin-left: 10px; margin-top: 7px;">250€</p>
                 </div>
@@ -121,18 +143,22 @@
                 <p>Elija la mensualidad: </p>
                 <div class="prestam">
                     <input type="button" class="botones" value="-">
-                    <input type="range" id="rango" name="rango" style="width: 80%" min="1" max="4" step="1" value="1" required>
+                    <input type="range" id="rango" name="rango" style="width: 80%" min="1" max="4" step="1" value="1"
+                        required>
                     <input type="button" class="botones" value="+">
                     <p id="boton" style="margin-left: 10px; margin-top: 7px;">1</p>
                 </div>
             </div>
-            <h6 style="font-style: italic">¡Todos los prestamos tendrán un interés del 10 % junto al sistema simple!</h6>
+            <h6 style="font-style: italic">¡Todos los prestamos tendrán un interés del 10 % junto al sistema simple!
+            </h6>
             <div class="divBotones">
-                <input type="submit" value="SOLICITAR" style="background-color:#2a2f41; color: white; font-weight: bold;" id="boton" onclick="calcularPrestamo()">
-                <button type="button"  onclick="ocultarTablaResultado()" class="botonCalcu"
+                <input type="submit" value="SOLICITAR"
+                    style="background-color:#2a2f41; color: white; font-weight: bold;" id="boton"
+                    onclick="calcularPrestamo()">
+                <button type="button" onclick="ocultarTablaResultado()" class="botonCalcu"
                     id="botonBorrarTabla">Borrar</button>
             </div>
-            
+
         </form>
     </div>
 

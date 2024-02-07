@@ -32,14 +32,9 @@ class usuario_model
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $usuario_array = array();
-            $usuario_array['correoUsuario'] = $row['correoUsuario'];
-            $usuario_array['nameUsuario'] = $row['nameUsuario'];
-            $usuario_array['passUsuario'] = $row['passUsuario'];
             $stmt->close();
             $this->CloseConnect();
-            return $usuario_array;
+            return $result;
         } else {
             $stmt->close();
             $this->CloseConnect();
@@ -64,8 +59,8 @@ class usuario_model
             if (password_verify($pass, $row['contraseña'])) {
                 $datosUser["id"] = $row['id_user'];
                 $datosUser["is_admin"] = $row['is_admin'];
-                $datosUser["correo"] = $row['correo'];
                 $datosUser["nombre"] = $row['nombre'];
+                $datosUser["correo"] = $row['correo'];
                 $stmt->close();
                 $this->CloseConnect();
                 return $datosUser;

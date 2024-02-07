@@ -1,8 +1,14 @@
 // Recupera el nombre del usuario almacenado en localStorage
 var username = localStorage.getItem('usuario');
+var correo = localStorage.getItem('correo');
+var userId = localStorage.getItem('userId');
 var isAdmin = localStorage.getItem('is_admin');
 var userIp = localStorage.getItem('ipUser');
 
+console.log('Nombre:', username);
+console.log('Correo:', correo);
+console.log('Id:', userId);
+console.log('isAdmin:', isAdmin);
 console.log('Ip:', userIp);
 
 if (username) {

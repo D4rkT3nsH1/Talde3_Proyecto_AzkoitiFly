@@ -1,5 +1,5 @@
 var usuario = localStorage.getItem('usuario');
-var correoUsuario = localStorage.getItem('correoUsuario');
+var correoUsuario = localStorage.getItem('correo');
 
 var btnChangeData = document.getElementById("btnChangeData");
 var btnDeleteUser = document.getElementById("btnDeleteUser");
