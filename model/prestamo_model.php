@@ -125,7 +125,6 @@ class prestamo_model
         }
     }
 
-
     public function editPrestamo($idPrestamo, $importe)
     {
         $this->OpenConnect();
@@ -141,6 +140,26 @@ class prestamo_model
 
         // Ejecuta la sentencia
         if ($stmt->execute()) {
+            // Verifica si se ha pagado la totalidad del préstamo
+            $sql_total = "SELECT monto, cant_pagada FROM prestamos WHERE id_pres = ?";
+            $stmt_total = $this->conn->prepare($sql_total);
+            $stmt_total->bind_param("i", $idPrestamo);
+            $stmt_total->execute();
+            $result = $stmt_total->get_result();
+            $row = $result->fetch_assoc();
+            $montoTotal = $row['monto'];
+            $cantPagada = $row['cant_pagada'];
+
+            // Calcula la deuda restante
+            $deudaRestante = $montoTotal - $cantPagada;
+
+            // Actualiza el estado según la deuda restante
+            $estado = $deudaRestante > 0 ? 'No Pagado' : 'Pagado';
+            $sql_update_estado = "UPDATE prestamos SET estado = ? WHERE id_pres = ?";
+            $stmt_update_estado = $this->conn->prepare($sql_update_estado);
+            $stmt_update_estado->bind_param("si", $estado, $idPrestamo);
+            $stmt_update_estado->execute();
+
             $this->CloseConnect();
             return true;
         } else {
@@ -148,6 +167,7 @@ class prestamo_model
             return false;
         }
     }
+
 
     public function insertarPrestamo($idUser, $monto, $años)
     {

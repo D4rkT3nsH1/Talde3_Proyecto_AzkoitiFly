@@ -1,7 +1,9 @@
 // JavaScript para actualizar el valor seleccionado en tiempo real
 
-var montoInsert, plazo;
-$("#mensajeInteres").hide();
+var monto = parseInt(document.getElementById('rango').value);
+var plazo = parseInt(document.getElementById('rango2').value);
+var montoInteres = monto * 1.1 ** plazo;
+document.getElementById('total').textContent = montoInteres.toFixed(2);
 
 function updateValue(value) {
     document.getElementById('rango').value = value;
@@ -52,19 +54,18 @@ document.getElementById('rango2').addEventListener('input', function () {
 });
 
 function updateValue3(monto, plazo) {
-    $("#mensajeInteres").show();
     montoInteres = monto * 1.1 ** plazo;
     document.getElementById('total').textContent = montoInteres.toFixed(2);
 }
 
 document.getElementById('prestamoForm').addEventListener('input', function () {
-    var monto = parseInt(document.getElementById('rango').value);
+    monto = parseInt(document.getElementById('rango').value);
     plazo = parseInt(document.getElementById('rango2').value);
     updateValue3(monto, plazo);
 });
 
 function insertarPrestamo() {
-
+    debugger;
     var jsonData = {
         "monto_json": montoInteres,
         "plazo_json": plazo

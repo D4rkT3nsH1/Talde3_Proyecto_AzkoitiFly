@@ -33,47 +33,49 @@ fetch('../../controller/cPrestamos.php')
                     celda.textContent = dato;
                 });
 
-                // Agrega una columna para el icono de borrar
-                var cellModificar = fila.insertCell();
-                var iconoModificar = document.createElement('i');
-                iconoModificar.classList.add('fa-solid', 'fa-pencil');
-                iconoModificar.style.cursor = 'pointer';
-                iconoModificar.style.color = '#111626';
-                iconoModificar.addEventListener('click', function () {
-                    var idPrestamo = prestamo.idPrestamo;
-                    var cantidad_a_pagar = prestamo.montoPrestamo - prestamo.cantPagada;
-                    $('#editarPrestamoModal').modal('show'); // Muestra el modal al hacer clic en el ícono de borrar
-                    $('#cantPagada').val(cantidad_a_pagar);
-                    $('#cantPagada').attr("disabled", true);
-                    $('#importe').val("");
-                    // Maneja el evento clic del botón de confirmar borrado en el modal
-                    document.getElementById('guardarCambiosBtn').addEventListener('click', function () {
-                        var importe = $('#importe').val();
-                        if (importe == "") {
-                            toastr.error("El campo importe no puede estar vacío");
-                            return;
-                        }
-                        if (importe > cantidad_a_pagar) {
-                            toastr.error("El importe no puede ser mayor a la cantidad a pagar");
-                            return;
-                        }
-                        fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo + '&importe=' + importe, {
-                            method: 'PUT'
-                        })
-                            .then(response => response.text())
-                            .then(data => {
-                                data = JSON.parse(data);
-                                if (data.success) {
-                                    localStorage.setItem("message", data.message);
-                                    location.reload();
-                                } else {
-                                    toastr.error(data.message);
-                                }
-                            });
-                        $('#editarPrestamoModal').modal('hide');
+                if (prestamo.estado == "No Pagado") {
+                    var cellModificar = fila.insertCell();
+                    var iconoModificar = document.createElement('i');
+                    iconoModificar.classList.add('fa-solid', 'fa-pencil');
+                    iconoModificar.style.cursor = 'pointer';
+                    iconoModificar.style.color = '#111626';
+                    iconoModificar.addEventListener('click', function () {
+                        var idPrestamo = prestamo.idPrestamo;
+                        var cantidad_a_pagar = prestamo.montoPrestamo - prestamo.cantPagada;
+                        $('#editarPrestamoModal').modal('show');
+                        $('#cantPagada').val(cantidad_a_pagar);
+                        $('#cantPagada').attr("disabled", true);
+                        $('#importe').val("");
+
+                        document.getElementById('guardarCambiosBtn').addEventListener('click', function () {
+                            var importe = $('#importe').val();
+                            if (importe == "") {
+                                toastr.error("El campo importe no puede estar vacío");
+                                return;
+                            }
+                            if (importe > cantidad_a_pagar) {
+                                toastr.error("El importe no puede ser mayor a la cantidad a pagar");
+                                return;
+                            }
+                            fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo + '&importe=' + importe, {
+                                method: 'PUT'
+                            })
+                                .then(response => response.text())
+                                .then(data => {
+                                    data = JSON.parse(data);
+                                    if (data.success) {
+                                        localStorage.setItem("message", data.message);
+                                        location.reload();
+                                    } else {
+                                        toastr.error(data.message);
+                                    }
+                                });
+                            $('#editarPrestamoModal').modal('hide');
+                        });
                     });
-                });
-                cellModificar.appendChild(iconoModificar);
+                    cellModificar.appendChild(iconoModificar);
+                }
+
             });
         } else {
             toastr.error(data.message);
