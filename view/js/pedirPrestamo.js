@@ -50,5 +50,9 @@ document.getElementById('rango2').addEventListener('input', function() {
     updateValue2(rangeValue2);
 });
 
-
-i
+var años = document.getElementById("rango2");
+var cant = document.getElementById("rango");
+var boto = document.getElementById("boton");
+boto.addEventListener("click", function insertarPrestamo($cant, $años){
+    
+});
