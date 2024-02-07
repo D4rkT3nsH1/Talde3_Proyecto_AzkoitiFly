@@ -16,8 +16,6 @@ fetch('../../controller/cPrestamos.php')
                 fila.id = prestamo.idPrestamo; // Asigna el idPrestamo como el id de la fila
 
                 var datosPrestamo = [
-                    prestamo['NombreUsuario'],
-                    prestamo['CorreoUsuario'],
                     prestamo['montoPrestamo'],
                     prestamo['cantPagada'],
                     prestamo['fechaInicio'],
@@ -32,28 +30,33 @@ fetch('../../controller/cPrestamos.php')
                 });
 
                 // Agrega una columna para el icono de borrar
-                var cellBorrar = fila.insertCell();
-                var iconoBorrar = document.createElement('i');
-                iconoBorrar.classList.add('fas', 'fa-trash-alt');
-                iconoBorrar.style.cursor = 'pointer';
-                iconoBorrar.style.color = '#111626';
-                iconoBorrar.addEventListener('click', function () {
+                var cellModificar = fila.insertCell();
+                var iconoModificar = document.createElement('i');
+                iconoModificar.classList.add('fa-solid','fa-pencil');
+                iconoModificar.style.cursor = 'pointer';
+                iconoModificar.style.color = '#111626';
+                iconoModificar.addEventListener('click', function () {
                     var idPrestamo = prestamo.idPrestamo;
-                    $('#confirmarBorradoModal').modal('show'); // Muestra el modal al hacer clic en el ícono de borrar
-
+                    var cantidad_a_pagar = prestamo.montoPrestamo - prestamo.cantPagada;
+                    $('#editarPrestamoModal').modal('show'); // Muestra el modal al hacer clic en el ícono de borrar
+                    $('#cantPagada').val(cantidad_a_pagar);
+                    $('#cantPagada').attr("disabled",true);
+                    $('#importe').val("");
                     // Maneja el evento clic del botón de confirmar borrado en el modal
-                    document.getElementById('confirmarBorradoBtn').addEventListener('click', function () {
+                    document.getElementById('guardarCambiosBtn').addEventListener('click', function () {
                         // Aquí puedes implementar la lógica para manejar el borrado del préstamo con idPrestamo
                         // Por ejemplo, puedes enviar una solicitud al servidor para borrar el préstamo
-                        console.log('Borrar préstamo con idPrestamo:', idPrestamo);
+                        console.log('Préstamo modificado con éxito idPrestamo:', idPrestamo);
 
                         // Cierra el modal después de confirmar el borrado
-                        $('#confirmarBorradoModal').modal('hide');
+                        $('#editarPrestamoModal').modal('hide');
                     });
+                    
                 });
-                cellBorrar.appendChild(iconoBorrar);
+                cellModificar.appendChild(iconoModificar);
 
                 
+
                 
             });
         } else {
