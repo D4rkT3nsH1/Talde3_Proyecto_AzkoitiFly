@@ -38,8 +38,20 @@ fetch('../../controller/cPrestamos.php')
                 iconoBorrar.style.cursor = 'pointer';
                 iconoBorrar.style.color = '#111626';
                 iconoBorrar.addEventListener('click', function () {
-                    console.log('Borrar préstamo con idPrestamo:', prestamo.idPrestamo);
+                    var idPrestamo = prestamo.idPrestamo;
+                    $('#confirmarBorradoModal').modal('show'); // Muestra el modal al hacer clic en el ícono de borrar
+
+                    // Maneja el evento clic del botón de confirmar borrado en el modal
+                    document.getElementById('confirmarBorradoBtn').addEventListener('click', function () {
+                        // Aquí puedes implementar la lógica para manejar el borrado del préstamo con idPrestamo
+                        // Por ejemplo, puedes enviar una solicitud al servidor para borrar el préstamo
+                        console.log('Borrar préstamo con idPrestamo:', idPrestamo);
+
+                        // Cierra el modal después de confirmar el borrado
+                        $('#confirmarBorradoModal').modal('hide');
+                    });
                 });
+
                 cellBorrar.appendChild(iconoBorrar);
             });
         } else {
