@@ -82,13 +82,21 @@ class prestamo_model
     }
 
 
-    public function editarPrestamo($idPrestamo, $cantidad)
+    public function editPrestamo($idPrestamo, $importe)
     {
         $this->OpenConnect();
 
-        $sql = "DELETE FROM prestamos WHERE id_pres = $idPrestamo";
+        // Prepara la consulta SQL con marcadores de posición
+        $sql = "UPDATE prestamos SET cant_pagada = cant_pagada + ? WHERE id_pres = ?";
 
-        if ($this->conn->query($sql) === TRUE) {
+        // Prepara la sentencia
+        $stmt = $this->conn->prepare($sql);
+
+        // Vincula los parámetros a los marcadores de posición
+        $stmt->bind_param("ii", $importe, $idPrestamo);
+
+        // Ejecuta la sentencia
+        if ($stmt->execute()) {
             $this->CloseConnect();
             return true;
         } else {

@@ -22,26 +22,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         // Captura cualquier excepción y retorna un mensaje de error
         echo json_encode(["success" => false, "message" => "Error en el servidor: " . $e->getMessage()]);
     }
+} else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    // Obtiene el id del préstamo a borrar desde la URL
+    $idPrestamo = $_GET['idPrestamo'];
+    $importe = $_GET['importe'];
 
-} else if($_SERVER['REQUEST_METHOD'] === 'PUT'){
-// Obtiene el id del préstamo a borrar desde la URL
-$idPrestamo = $_GET['idPrestamo'];
+    try {
+        // Intenta borrar el préstamo con el id proporcionado
+        $editado = $Prestamo_Model->editPrestamo($idPrestamo, $importe);
 
-try {
-    // Intenta borrar el préstamo con el id proporcionado
-    $borrado = $Prestamo_Model->borrarPrestamo($idPrestamo);
-
-    // Retorna un mensaje JSON según el resultado del borrado
-    if ($borrado) {
-        echo json_encode(["success" => true, "message" => "Préstamo pagado con éxito."]);
-    } else {
-        echo json_encode(["success" => false, "message" => "No se pudo efectuar el pago."]);
+        // Retorna un mensaje JSON según el resultado del borrado
+        if ($editado) {
+            echo json_encode(["success" => true, "message" => "Préstamo pagado con éxito."]);
+        } else {
+            echo json_encode(["success" => false, "message" => "No se pudo efectuar el pago."]);
+        }
+    } catch (Exception $e) {
+        // Captura cualquier excepción y retorna un mensaje de error
+        echo json_encode(["success" => false, "message" => "Error en el servidor: " . $e->getMessage()]);
     }
-} catch (Exception $e) {
-    // Captura cualquier excepción y retorna un mensaje de error
-    echo json_encode(["success" => false, "message" => "Error en el servidor: " . $e->getMessage()]);
-}
-
 } else {
     // Si la solicitud no es de tipo DELETE, devuelve todos los préstamos como lo hacías antes
     try {
