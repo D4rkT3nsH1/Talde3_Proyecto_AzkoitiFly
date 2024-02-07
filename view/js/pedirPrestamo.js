@@ -81,9 +81,9 @@ function insertarPrestamo() {
                 response = JSON.parse(response);
                 if (response.success) {
                     // Si la operación fue exitosa, muestra un toast de éxito
-                    toastr.success(response.message);
                     $("#rango").val("");
                     $("#rango2").val("");
+                    toastr.success(response.message);
                 } else {
                     // Si la operación falló, muestra un toast de error
                     toastr.error(response.message);
