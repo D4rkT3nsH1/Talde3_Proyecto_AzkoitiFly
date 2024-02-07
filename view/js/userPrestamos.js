@@ -44,11 +44,18 @@ fetch('../../controller/cPrestamos.php')
                     $('#importe').val("");
                     // Maneja el evento clic del botón de confirmar borrado en el modal
                     document.getElementById('guardarCambiosBtn').addEventListener('click', function () {
-                        // Aquí puedes implementar la lógica para manejar el borrado del préstamo con idPrestamo
-                        // Por ejemplo, puedes enviar una solicitud al servidor para borrar el préstamo
-                        console.log('Préstamo modificado con éxito idPrestamo:', idPrestamo);
-
-                        // Cierra el modal después de confirmar el borrado
+                        fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo, {
+                            method: 'PUT'
+                        })
+                            .then(response => response.text())
+                            .then(data => {
+                                data = JSON.parse(data);
+                                if (data.success) {
+                                    toastr.success(data.message);
+                                } else {
+                                    toastr.error(data.message);
+                                }
+                            });
                         $('#editarPrestamoModal').modal('hide');
                     });
                     
