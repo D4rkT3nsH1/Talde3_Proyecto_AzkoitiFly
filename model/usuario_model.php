@@ -154,25 +154,4 @@ class usuario_model
             return false;
         }
     }
-
-    public function insertarPrestamo($monto, $años) {
-        // Calcular la fecha de inicio y final del préstamo
-        $fecha_inicio = date('Y-m-d');
-        $fecha_fin = date('Y-m-d', strtotime("+$años years", strtotime($fecha_inicio)));
-    
-        // Preparar la consulta SQL utilizando marcadores de posición para evitar inyección SQL
-        $sql = "INSERT INTO prestamos (monto, cant_pagada, fec_ini, fec_fin) VALUES (?, 0, ?, ?)";
-        $stmt = $this->conn->prepare($sql);
-        
-        // Vincular los parámetros y ejecutar la consulta
-        $stmt->bind_param("sss", $monto, $fecha_inicio, $fecha_fin);
-        $stmt->execute();
-        
-        // Verificar si la consulta fue exitosa
-        if ($stmt->affected_rows > 0) {
-            return true; // Éxito
-        } else {
-            return false; // Falló la inserción
-        }
-    }
 }

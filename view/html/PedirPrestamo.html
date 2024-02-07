@@ -134,7 +134,8 @@
                 <p>Elija su prestamo: </p>
                 <div class="prestam">
                     <input type="button" id="menos" class="botones" value="-">
-                    <input type="range" id="rango" style="width: 80%" min="250" max="50000" step="250" value="250" required>
+                    <input type="range" id="rango" style="width: 80%" min="250" max="50000" step="250" value="250"
+                        required>
                     <input type="button" id="mas" class="botones" value="+">
                     <p id="euros" style="margin-left: 10px; margin-top: 7px;">250€</p>
                 </div>
@@ -149,17 +150,17 @@
             </div>
             <h6 style="font-style: italic">¡Todos los prestamos tendrán un interés del 10 % junto al sistema simple!
             </h6>
+            <br>
+            <h3 id="mensajeInteres">El importe total a devolver será de: <span id="total"></span>€</h3>
             <div class="divBotones">
-                <input type="submit" value="SOLICITAR" style="background-color:#2a2f41; color: white; font-weight: bold;" id="boton">
-                <a href="ListaPrestamos.html" ><input type="button" value="MODIFICAR PRESTAMOS" style="background-color:#330202; color: white; font-weight: bold;" id="boton" ></a>
-                <button type="button"  onclick="ocultarTablaResultado()" class="botonCalcu"
-                    id="botonBorrarTabla">Borrar</button>
+                <button onclick="insertarPrestamo()" class="botonCalcu">Solicitar</button>
+                <a href="ListaPrestamos.html"><button class="botonCalcu">Modificar Préstamos</button></a>
             </div>
 
         </form>
     </div>
 
-    <div id="foot" >
+    <div id="foot">
         <div>
             <h3>Contáctanos</h3>
             <p>¿Tienes preguntas o necesitas asistencia? Contáctanos ahora mismo y nuestro equipo estará encantado de
