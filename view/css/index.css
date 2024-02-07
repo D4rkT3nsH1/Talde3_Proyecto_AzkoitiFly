@@ -10,7 +10,11 @@ section {
     align-items: center;
 }
 
+.contactanos {
+    box-shadow: 0 0 10px rgb(61, 46, 83);
+}
 
+/*
 .hacerFinanzas {
     background-color: #111626;
     color: white;
@@ -23,4 +27,4 @@ section {
 .hacerFinanzas {
     border: none;
     border-radius: 10px;
-}
+} */

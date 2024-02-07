@@ -2,7 +2,8 @@
 class prestamo_class
 {
     private $idPrestamo;
-    private $idUsuario;
+    private $NombreUsuario;
+    private $CorreoUsuario;
     private $montoPrestamo;
     private $cantPagada;
     private $fechaInicio;
@@ -20,14 +21,24 @@ class prestamo_class
         $this->idPrestamo = $idPrestamo;
     }
 
-    public function getIdUsuario()
+    public function getNombreUsuario()
     {
-        return $this->idUsuario;
+        return $this->NombreUsuario;
     }
 
-    public function setIdUsuario($idUsuario)
+    public function setNombreUsuario($NombreUsuario)
     {
-        $this->idUsuario = $idUsuario;
+        $this->NombreUsuario = $NombreUsuario;
+    }
+
+    public function getCorreoUsuario()
+    {
+        return $this->CorreoUsuario;
+    }
+
+    public function setCorreoUsuario($CorreoUsuario)
+    {
+        $this->CorreoUsuario = $CorreoUsuario;
     }
 
     public function getMontoPrestamo()
