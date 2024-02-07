@@ -26,58 +26,41 @@ class prestamo_model
     {
         $this->OpenConnect();
 
-        $sql = "SELECT * FROM prestamo";
+        $sql = "SELECT p.id_pres AS 'ID Préstamo',
+            u.nombre AS 'Nombre Usuario', 
+            u.correo AS 'Correo Usuario', 
+            p.monto AS 'Monto', 
+            p.cant_pagada AS 'Cantidad Pagada', 
+            p.fec_ini AS 'Fecha Inicio', 
+            p.fec_fin AS 'Fecha Final', 
+            CASE 
+                WHEN p.estado = 1 THEN 'Pagado'
+                WHEN p.estado = 0 THEN 'No Pagado'
+                ELSE 'Estado Desconocido'
+            END AS 'Estado del Pago'
+            FROM prestamos p
+            JOIN usuario u ON p.id_user = u.id_user";
+
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
             $prestamo_array = array();
             while ($row = $result->fetch_assoc()) {
                 $prestamo = new prestamo_class();
-                $prestamo->setIdUsuario($row['id_user']);
-                $prestamo->setIdPrestamo($row['id_pres']);
-                $prestamo->setMontoPrestamo($row['monto']);
-                $prestamo->setCantPagada($row['cant_pagada']);
-                $prestamo->setFechaInicio($row['fec_ini']);
-                $prestamo->setFechaFin($row['fec_fin']);
-                $prestamo->setEstado($row['estado']);
+                // Accediendo a las columnas por sus alias en la consulta SQL
+                $prestamo->setIdPrestamo($row['ID Préstamo']);
+                $prestamo->setNombreUsuario($row['Nombre Usuario']);
+                $prestamo->setCorreoUsuario($row['Correo Usuario']);
+                $prestamo->setMontoPrestamo($row['Monto']);
+                $prestamo->setCantPagada($row['Cantidad Pagada']);
+                $prestamo->setFechaInicio($row['Fecha Inicio']);
+                $prestamo->setFechaFin($row['Fecha Final']);
+                $prestamo->setEstado($row['Estado del Pago']);
                 array_push($prestamo_array, $prestamo);
             }
             $this->CloseConnect();
             return $prestamo_array;
         } else {
-            $this->CloseConnect();
-            return false;
-        }
-    }
-
-    public function PrestamoByUsuario($idUsuario)
-    {
-        $this->OpenConnect();
-
-        $sql = "SELECT * FROM prestamo WHERE idUsuario = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $idUsuario);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $prestamo_array = array();
-            while ($row = $result->fetch_assoc()) {
-                $prestamo = new prestamo_class();
-                $prestamo->setIdUsuario($row['id_user']);
-                $prestamo->setIdPrestamo($row['id_pres']);
-                $prestamo->setMontoPrestamo($row['monto']);
-                $prestamo->setCantPagada($row['cant_pagada']);
-                $prestamo->setFechaInicio($row['fec_ini']);
-                $prestamo->setFechaFin($row['fec_fin']);
-                $prestamo->setEstado($row['estado']);
-                array_push($prestamo_array, $prestamo);
-            }
-            $stmt->close();
-            $this->CloseConnect();
-            return $prestamo_array;
-        } else {
-            $stmt->close();
             $this->CloseConnect();
             return false;
         }

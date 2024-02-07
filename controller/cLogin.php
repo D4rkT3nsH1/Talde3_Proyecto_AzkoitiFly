@@ -29,7 +29,7 @@ try {
 
     // Retorna un mensaje JSON según el resultado
     if ($result) {
-        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "ip" => $_SESSION['ip'], "usuario" => $result["nombre"], "correo" => $result["correo"], "userId" => $result["id"], "is_admin" => $result["is_admin"]]);
+        echo json_encode(["success" => true, "message" => "Te damos la bienvenida!", "ip" => $_SESSION['ip'], "usuario" =>  $_SESSION['user'], "correo" => $_SESSION['correo'], "userId" => $_SESSION['userId'], "is_admin" => $_SESSION['is_admin']]);
     } else {
         echo json_encode(["success" => false, "message" => "Correo o contraseña incorrectos"]);
     }
