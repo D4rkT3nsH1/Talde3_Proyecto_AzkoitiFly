@@ -32,7 +32,7 @@ if (username) {
             } else {
                 console.log('Hay cookies almacenadas');
             }
-        })
+        });
     $('#logReg').hide();
     if (isAdmin === "1") {
         $('#adminDrop').show();
