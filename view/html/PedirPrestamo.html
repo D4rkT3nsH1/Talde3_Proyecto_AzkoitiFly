@@ -133,45 +133,43 @@
                 <span style="display:none" id="valorSeleccionado"><b></b></span></p>
                 <p>Elija su prestamo: </p>
                 <div class="prestam">
-                    <input type="button" class="botones" value="-">
-                    <input type="range" id="rango" name="rango" style="width: 80%" min="250" max="50000" step="250"
-                        value="250" required>
-                    <input type="button" class="botones" value="+">
-                    <p id="boton" style="margin-left: 10px; margin-top: 7px;">250€</p>
+                    <input type="button" id="menos" class="botones" value="-">
+                    <input type="range" id="rango" style="width: 80%" min="250" max="50000" step="250" value="250" required>
+                    <input type="button" id="mas" class="botones" value="+">
+                    <p id="euros" style="margin-left: 10px; margin-top: 7px;">250€</p>
                 </div>
                 <br>
-                <p>Elija la mensualidad: </p>
+                <p>Elija el plazo en años: </p>
                 <div class="prestam">
-                    <input type="button" class="botones" value="-">
-                    <input type="range" id="rango" name="rango" style="width: 80%" min="1" max="4" step="1" value="1"
-                        required>
-                    <input type="button" class="botones" value="+">
-                    <p id="boton" style="margin-left: 10px; margin-top: 7px;">1</p>
+                    <input type="button" id="menos2" class="botones" value="-">
+                    <input type="range" id="rango2" style="width: 80%" min="1" max="4" step="1" value="1" required>
+                    <input type="button" id="mas2" class="botones" value="+">
+                    <p id="años" style="margin-left: 10px; margin-top: 7px;">1</p>
                 </div>
             </div>
             <h6 style="font-style: italic">¡Todos los prestamos tendrán un interés del 10 % junto al sistema simple!
             </h6>
             <div class="divBotones">
-                <input type="submit" value="SOLICITAR"
-                    style="background-color:#2a2f41; color: white; font-weight: bold;" id="boton"
-                    onclick="calcularPrestamo()">
-                <button type="button" onclick="ocultarTablaResultado()" class="botonCalcu"
+                <input type="submit" value="SOLICITAR" style="background-color:#2a2f41; color: white; font-weight: bold;" id="boton" onclick="calcularPrestamo()">
+                <input type="submit" name="BORRAR" value="BORRAR PRESTAMO" style="background-color:#330202; color: white; font-weight: bold;" id="boton" onclick="calcularPrestamo()">
+                <input type="submit" name="MODIFICAR" value="MODIFICAR PRESTAMO" style="background-color:#132001; color: white; font-weight: bold;" id="boton" onclick="calcularPrestamo()">
+                <button type="button"  onclick="ocultarTablaResultado()" class="botonCalcu"
                     id="botonBorrarTabla">Borrar</button>
             </div>
 
         </form>
     </div>
 
-    <footer>
+    <div id="foot" >
         <div>
             <h3>Contáctanos</h3>
             <p>¿Tienes preguntas o necesitas asistencia? Contáctanos ahora mismo y nuestro equipo estará encantado de
                 ayudarte.</p>
         </div>
         <div>
-            <button href="formContacto.html" class="contactanos">Contactanos!!</button>
+            <button href="formContacto.html" class="contactanos">¡¡Contactanos!!</button>
         </div>
-    </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript"

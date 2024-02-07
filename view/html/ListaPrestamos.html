@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azkoiti</title>
+  <link rel="icon" href="../img/icons/azkoiti.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/historial.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/comun.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+
+<body>
+  <!-- cabecero de la pagina -->
+  <header class="container-fluid">
+    <nav id="barra" class="row d-flex justify-content-around">
+      <div class="col-12 col-md-3 d-flex align-items-center">
+        <a href="index.html">
+          <img src="../img/icons/azkoiti_texto_sin_fondo_white.png">
+        </a>
+      </div>
+      <ul class="col-12 col-md-8 list-unstyled m-0 d-flex align-items-center justify-content-end">
+
+        <div id="logReg">
+          <li class="d-flex align-items-center logButton">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <a href="LoginRegistro.html" class="navTitles">Log-In / Sign-up</a>
+          </li>
+        </div>
+
+        <li class="nav-item dropdown logButton" id="userDrop">
+          <i class="fa-solid fa-user"></i>
+          <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            User
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="dropContent dropItem">
+                <a class="dropdown-item" href="PedirPrestamo.html">
+                  <div id="menuUser">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <span>Préstamos</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="dropContent dropItem">
+                <a class="dropdown-item" onclick="cerrarSesion()">
+                  <div id="menuUser">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Log Out</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown logButton" id="adminDrop">
+          <i class="fa-solid fa-user"></i>
+          <a class="nav-link dropdown-toggle navTitles" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            User
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="dropContent dropItem">
+                <a class="dropdown-item" href="CalculadoraPrestamos.html">
+                  <div id="menuUser">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Calculadora</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="dropContent dropItem">
+                <a class="dropdown-item" href="HistorialPrestamo.html">
+                  <div id="menuUser">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <span>Historial</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="dropContent dropItem">
+                <a class="dropdown-item" onclick="cerrarSesion()">
+                  <div id="menuUser">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Log Out</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">Historial de Préstamos</h1>
+      </div>
+    </div>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Usuario</th>
+            <th>ID Prestamo</th>
+            <th>Monto</th>
+            <th>Cantidad Pagada</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Final</th>
+            <th>Estado del Pago</th>
+          </tr>
+        </thead>
+        <tbody id="historial">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <h3>Contáctanos</h3>
+      <p>¿Tienes preguntas o necesitas asistencia? Contáctanos ahora mismo y nuestro equipo estará encantado de
+        ayudarte.</p>
+    </div>
+    <div>
+      <button href="formContacto.html" class="contactanos">Contactanos!!</button>
+    </div>
+  </footer>
+
+  <!-- conexion con jquery y ajax -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="../js/historial.js"></script>
+  <script src="../js/comun.js"></script>
+  <!-- iconos -->
+  <script src="https://kit.fontawesome.com/54820bdf60.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
