@@ -45,7 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Si la solicitud no es de tipo DELETE, devuelve todos los préstamos como lo hacías antes
     try {
         // Intenta realizar la inserción
-        $result = $Prestamo_Model->getAllPrestamos();
+        if ($_SESSION['is_admin'] == 1) {
+            $result = $Prestamo_Model->getAllPrestamos();
+        } else {
+            $result = $Prestamo_Model->getPrestamosByUser($_SESSION['userId']);
+        }
 
         // Convertir objetos prestamo_class a arrays asociativos
         $prestamosArray = [];
