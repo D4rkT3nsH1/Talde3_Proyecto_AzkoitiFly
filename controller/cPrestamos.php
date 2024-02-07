@@ -1,6 +1,8 @@
 <?php
 include_once '../model/prestamo_model.php';
 
+session_start();
+
 $Prestamo_Model = new prestamo_model();
 
 // Verifica si la solicitud es de tipo DELETE

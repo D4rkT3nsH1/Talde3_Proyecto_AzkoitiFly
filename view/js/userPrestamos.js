@@ -3,6 +3,10 @@ fetch('../../controller/cPrestamos.php')
     .then(data => {
         data = JSON.parse(data);
         if (data.success) {
+            if (localStorage.getItem("message") != null) {
+                toastr.success(localStorage.getItem("message"));
+                localStorage.removeItem("message");
+            }
             // Rellena la tabla con los datos de los préstamos
             var prestamos = data.prestamos;
 
@@ -53,27 +57,23 @@ fetch('../../controller/cPrestamos.php')
                             toastr.error("El importe no puede ser mayor a la cantidad a pagar");
                             return;
                         }
-                        fetch('../../controller/cPrestamos.php?idPrestamo' + idPrestamo + '&importe=' + importe, {
+                        fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo + '&importe=' + importe, {
                             method: 'PUT'
                         })
                             .then(response => response.text())
                             .then(data => {
                                 data = JSON.parse(data);
                                 if (data.success) {
-                                    toastr.success(data.message);
+                                    localStorage.setItem("message", data.message);
+                                    location.reload();
                                 } else {
                                     toastr.error(data.message);
                                 }
                             });
                         $('#editarPrestamoModal').modal('hide');
                     });
-
                 });
                 cellModificar.appendChild(iconoModificar);
-
-
-
-
             });
         } else {
             toastr.error(data.message);
