@@ -43,7 +43,6 @@ fetch('../../controller/cPrestamos.php')
 
                     // Maneja el evento clic del botón de confirmar borrado en el modal
                     document.getElementById('confirmarBorradoBtn').addEventListener('click', function () {
-                        console.log('Borrar préstamo con idPrestamo:', idPrestamo);
                         fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo, {
                             method: 'DELETE'
                         })
