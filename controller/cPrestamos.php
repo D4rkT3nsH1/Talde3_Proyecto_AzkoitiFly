@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         echo json_encode(["success" => false, "message" => "Error en el servidor: " . $e->getMessage()]);
     }
 } else {
-    // Si la solicitud no es de tipo DELETE, devuelve todos los préstamos como lo hacías antes
     try {
         // Intenta realizar la inserción
         if ($_SESSION['is_admin'] == 1) {
