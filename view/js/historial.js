@@ -31,38 +31,43 @@ fetch('../../controller/cPrestamos.php')
                     celda.textContent = dato;
                 });
 
-                // Agrega una columna para el icono de borrar
-                var cellBorrar = fila.insertCell();
-                var iconoBorrar = document.createElement('i');
-                iconoBorrar.classList.add('fas', 'fa-trash-alt');
-                iconoBorrar.style.cursor = 'pointer';
-                iconoBorrar.style.color = '#111626';
-                iconoBorrar.addEventListener('click', function () {
-                    var idPrestamo = prestamo.idPrestamo;
-                    $('#confirmarBorradoModal').modal('show'); // Muestra el modal al hacer clic en el ícono de borrar
+                if (prestamo['estado'] === 'Pagado') {
+                    fila.style.backgroundColor = 'rgba(17, 22, 38, 0.35)';
+                    // Agrega una columna para el icono de borrar
+                    var cellBorrar = fila.insertCell();
+                    var iconoBorrar = document.createElement('i');
+                    iconoBorrar.classList.add('fas', 'fa-trash-alt');
+                    iconoBorrar.style.cursor = 'pointer';
+                    iconoBorrar.style.color = '#111626';
+                    iconoBorrar.addEventListener('click', function () {
+                        var idPrestamo = prestamo.idPrestamo;
+                        $('#confirmarBorradoModal').modal('show'); // Muestra el modal al hacer clic en el ícono de borrar
 
-                    // Maneja el evento clic del botón de confirmar borrado en el modal
-                    document.getElementById('confirmarBorradoBtn').addEventListener('click', function () {
-                        fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo, {
-                            method: 'DELETE'
-                        })
-                            .then(response => response.text())
-                            .then(data => {
-                                data = JSON.parse(data);
-                                if (data.success) {
-                                    toastr.success(data.message);
-                                    fila.remove();
-                                } else {
-                                    toastr.error(data.message);
-                                }
-                            });
-                        $('#confirmarBorradoModal').modal('hide');
+                        // Maneja el evento clic del botón de confirmar borrado en el modal
+                        document.getElementById('confirmarBorradoBtn').addEventListener('click', function () {
+                            fetch('../../controller/cPrestamos.php?idPrestamo=' + idPrestamo, {
+                                method: 'DELETE'
+                            })
+                                .then(response => response.text())
+                                .then(data => {
+                                    data = JSON.parse(data);
+                                    if (data.success) {
+                                        toastr.success(data.message);
+                                        fila.remove();
+                                    } else {
+                                        toastr.error(data.message);
+                                    }
+                                });
+                            $('#confirmarBorradoModal').modal('hide');
+                        });
                     });
-                });
-                cellBorrar.appendChild(iconoBorrar);
+                    cellBorrar.appendChild(iconoBorrar);
+                }
 
-                
-                
+
+
+
+
             });
         } else {
             toastr.error(data.message);

@@ -8,6 +8,12 @@
     overflow: hidden;
 }
 
+.buttonDiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .tab-buttons {
     display: flex;
     border-radius: 5px 5px 0 0;
@@ -16,6 +22,7 @@
 .tab-button {
     flex: 1;
     padding: 15px;
+    margin: 10px;
     text-align: center;
     cursor: pointer;
     outline: none;
