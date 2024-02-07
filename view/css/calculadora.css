@@ -34,7 +34,7 @@
 }
 
 .tab-button:hover {
-    background-color: #2a2f41;
+    background-color: #414863;
 }
 
 .tab-content.activado {
@@ -46,7 +46,7 @@
 }
 
 .activado {
-    background-color: #2a2f41;
+    background-color: #414863;
 }
 
 #prestamoForm {
