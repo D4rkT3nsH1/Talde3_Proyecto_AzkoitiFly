@@ -65,4 +65,19 @@ class prestamo_model
             return false;
         }
     }
+
+    public function borrarPrestamo($idPrestamo)
+    {
+        $this->OpenConnect();
+
+        $sql = "DELETE FROM prestamos WHERE id_pres = $idPrestamo";
+
+        if ($this->conn->query($sql) === TRUE) {
+            $this->CloseConnect();
+            return true;
+        } else {
+            $this->CloseConnect();
+            return false;
+        }
+    }
 }
