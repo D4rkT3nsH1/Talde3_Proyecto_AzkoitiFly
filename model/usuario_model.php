@@ -79,14 +79,14 @@ class usuario_model
 
     public function RegisterUser($correo, $name, $pass)
     {
-        $this->OpenConnect();
-
         // Verificar si el correo ya existe
         $existingUser = $this->UserByCorreo($correo);
 
         if ($existingUser) {
             return false; // El correo ya está registrado
         }
+
+        $this->OpenConnect();
 
         // Cifrar la contraseña
         $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
@@ -159,5 +159,4 @@ class usuario_model
             return false;
         }
     }
-
 }

@@ -115,8 +115,8 @@ function InicioSesion() {
                 if (response.success) {
                     // Mostrar un toast de éxito
                     localStorage.setItem('ipUser', response.ip);
-                    localStorage.setItem('correoUsuario', response.correoUsuario);
-                    localStorage.setItem('idUsuario', response.idUsuario);
+                    localStorage.setItem('correoUsuario', response.correo);
+                    localStorage.setItem('idUsuario', response.userId);
                     localStorage.setItem('usuario', response.usuario);
                     localStorage.setItem('is_admin', response.is_admin);
                     toastr.success(response.usuario, response.message);

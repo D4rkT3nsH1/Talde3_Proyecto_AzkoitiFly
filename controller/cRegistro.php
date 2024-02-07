@@ -3,11 +3,6 @@ include_once '../model/usuario_model.php';
 
 $User_Model = new usuario_model();
 
-// Inicializar la sesión
-session_start();
-
-// ...
-
 try {
     // Recibe los datos JSON
     $data = json_decode(file_get_contents("php://input"), true);
@@ -30,5 +25,3 @@ try {
     // Captura cualquier excepción y retorna un mensaje de error
     echo json_encode(["success" => false, "message" => "Error en el servidor: " . $e->getMessage()]);
 }
-
-// ...
