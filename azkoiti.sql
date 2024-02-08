@@ -83,7 +83,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_user`, `is_admin`, `nombre`, `correo`, `contraseña`) VALUES
-(1, b'1', 'Admin', 'gontzalizurza@gmail.com', '$2y$10$h3BfBdje6xC8wLjRyis/neN0e9meoFc/SGTfYfN4FkzmESqY.BhzO');
+(1, b'1', 'Admin', 'gontzalizurza@gmail.com', '$2y$10$h3BfBdje6xC8wLjRyis/neN0e9meoFc/SGTfYfN4FkzmESqY.BhzO'),
 (2, b'0', 'Usuario 2', 'usuario2@example.com', '$2y$10$h3BfBdje6xC8wLjRyis/neN0e9meoFc/SGTfYfN4FkzmESqY.BhzO'),
 (3, b'0', 'Usuario 3', 'usuario3@example.com', '$2y$10$h3BfBdje6xC8wLjRyis/neN0e9meoFc/SGTfYfN4FkzmESqY.BhzO'),
 (4, b'0', 'Usuario 4', 'usuario4@example.com', '$2y$10$h3BfBdje6xC8wLjRyis/neN0e9meoFc/SGTfYfN4FkzmESqY.BhzO'),
