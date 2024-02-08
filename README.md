@@ -15,7 +15,8 @@
 ### Pasos para el autocompletado de la tabla:
 
 1. Ingresa al sistema como administrador.
-2. Selecciona la opción de cálculo de préstamos.
+2. Se le abrirá automáticamente la calculadora.
+    - También podrá volver a ella desde el botón superior derecho en todas las páginas.
 3. Completa las variables requeridas, como monto, tasa de interés, plazo, etc.
 4. La tabla se autocompletará con los resultados del cálculo.
 
@@ -25,4 +26,5 @@
     - Si no tienes cuenta, regístrate.
 2. Selecciona la opción de préstamos.
 3. Completa las variables requeridas asociadas a tu préstamo.
-4. Por último, haz clic en el botón de *"Pedir Préstamo"*.
+4. Por último, haz clic en el botón de *"Solicitar"*.
+5. Podrás ver / pagar tus préstamos en *"Modificar préstamos"*
