@@ -8,6 +8,10 @@
     overflow: hidden;
 }
 
+.prestamo-container {
+    margin-top: -10px;
+}
+
 .buttonDiv {
     width: 100%;
     display: flex;

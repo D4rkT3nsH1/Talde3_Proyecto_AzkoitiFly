@@ -75,6 +75,7 @@ fetch('../../controller/cPrestamos.php')
                     });
                     cellModificar.appendChild(iconoModificar);
                 } else {
+                    fila.insertCell();
                     fila.style.backgroundColor = 'rgba(17, 22, 38, 0.35)';
                 }
 
