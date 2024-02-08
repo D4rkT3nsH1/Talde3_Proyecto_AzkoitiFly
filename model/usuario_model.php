@@ -125,11 +125,39 @@ class usuario_model
         }
     }
 
+    public function deleteUser($userId)
+    {
+        $this->OpenConnect();
+
+        $sql = "DELETE FROM usuario WHERE id_user=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $result = $stmt->execute();
+
+        if ($result) {
+            if ($this->conn !== null) {
+                $this->CloseConnect();
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function changeUserData($userId, $correo, $name, $pasahitza)
     {
         $this->OpenConnect();
-        $sql = "UPDATE usuario SET correo='$correo', contraseña='$pasahitza', nombre='$name' WHERE id_user ='$userId'";
-        $result = $this->conn->query($sql);
+
+        $sql = "UPDATE usuario SET correo=?, contraseña=?, nombre=? WHERE id_user=?";
+        $stmt = $this->conn->prepare($sql);
+
+        // Hash de la contraseña utilizando password_hash
+        $hashedPassword = password_hash($pasahitza, PASSWORD_DEFAULT);
+
+        // Vincular parámetros y ejecutar la sentencia
+        $stmt->bind_param("sssi", $correo, $hashedPassword, $name, $userId);
+        $result = $stmt->execute();
+
         if ($result) {
             if ($this->conn !== null) {
                 $this->CloseConnect();
@@ -143,8 +171,14 @@ class usuario_model
     public function changeUserDataWoPass($userId, $correo, $name)
     {
         $this->OpenConnect();
-        $sql = "UPDATE usuario SET correo='$correo', nombre='$name' WHERE id_user ='$userId'";
-        $result = $this->conn->query($sql);
+
+        $sql = "UPDATE usuario SET correo=?, nombre=? WHERE id_user=?";
+        $stmt = $this->conn->prepare($sql);
+
+        // Vincular parámetros y ejecutar la sentencia
+        $stmt->bind_param("ssi", $correo, $name, $userId);
+        $result = $stmt->execute();
+
         if ($result) {
             if ($this->conn !== null) {
                 $this->CloseConnect();

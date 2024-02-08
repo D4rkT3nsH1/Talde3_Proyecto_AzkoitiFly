@@ -64,18 +64,14 @@ app.controller('UserController', function ($scope, $http) {
     };
 
     $scope.showDeleteModal = function () {
-        // AngularJS logic to show the delete user modal
         $('#confirmDeleteModal').modal('show');
     };
 
-    // Additional AngularJS logic if needed
 
     $scope.confirmDelete = function () {
-        // AngularJS logic for confirming user deletion
         $.ajax({
             type: "POST",
             url: "../../controller/cDeleteUser.php",
-            data: JSON.stringify({ "correoUsuario": $scope.correo }),
             contentType: "application/json",
             success: function (response) {
                 try {
