@@ -62,6 +62,8 @@ fetch('../../controller/cPrestamos.php')
                         });
                     });
                     cellBorrar.appendChild(iconoBorrar);
+                } else {
+                    fila.insertCell();
                 }
 
 

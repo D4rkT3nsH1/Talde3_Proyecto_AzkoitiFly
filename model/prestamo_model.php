@@ -154,10 +154,10 @@ class prestamo_model
             $deudaRestante = $montoTotal - $cantPagada;
 
             // Actualiza el estado según la deuda restante
-            $estado = $deudaRestante > 0 ? 'No Pagado' : 'Pagado';
+            $estado = $deudaRestante > 0 ? 0 : 1; // 0 = No pagado, 1 = Pagado
             $sql_update_estado = "UPDATE prestamos SET estado = ? WHERE id_pres = ?";
             $stmt_update_estado = $this->conn->prepare($sql_update_estado);
-            $stmt_update_estado->bind_param("si", $estado, $idPrestamo);
+            $stmt_update_estado->bind_param("ii", $estado, $idPrestamo);
             $stmt_update_estado->execute();
 
             $this->CloseConnect();
