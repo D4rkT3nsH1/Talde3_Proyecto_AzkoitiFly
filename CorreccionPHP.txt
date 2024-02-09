@@ -17,3 +17,10 @@
 
 5. Actualizar:
     un ejemplo puede ser cChangeUserData.php que cambia los datos del usuario mediante un formulario, intenta entender el.
+
+
+
+9. variables superglobales
+$_SERVER en cPrestamos.php -> Usando $_SERVER['REQUEST_METHOD']
+$_COOKIES en cookies controller
+$_SESSION en login
