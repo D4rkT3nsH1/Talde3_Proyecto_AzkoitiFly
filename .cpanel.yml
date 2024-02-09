@@ -1,0 +1,8 @@
+---
+deployment:
+    tasks:
+    - export DEPLOYPATH=/home/aw3grubz/public_html/
+    - rm -Rf $DEPLOYPATH/*
+    - cp -Rf controller $DEPLOYPATH
+    - cp -Rf model $DEPLOYPATH
+    - cp -Rf view $DEPLOYPATH
