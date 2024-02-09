@@ -1,0 +1,19 @@
+1. Login:
+    controller -> cLogin.php [$_SESSION] -> $User_Model->CheckUserLogin($correo, $pass);
+
+2. Visualizar:
+
+
+3. Insertar:
+    Erabiltzaile berriak -> cRegistro -> $User_Model->RegisterUser($correo, $name, $pass);
+    Inserción de datos bancarios -> cInsertPrestamo.php -> $Prestamo_Model->insertarPrestamo($idUser, $monto, $plazo);
+
+4. Borrar:
+    Préstamos: controller -> cPrestamos.php -> Usando $_SERVER['REQUEST_METHOD']
+        ejemplo: historial.js linea 48-60
+        $idPrestamo = $_GET['idPrestamo'] <- de esta manera cogemos los datos mediante $_GET
+    
+    Usuarios: controller -> cDeleteUser.php
+
+5. Actualizar:
+    un ejemplo puede ser cChangeUserData.php que cambia los datos del usuario mediante un formulario, intenta entender el.
